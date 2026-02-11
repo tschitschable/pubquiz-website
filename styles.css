@@ -211,6 +211,13 @@ main {
   margin: 0 1rem;
 }
 
+.date-register-btn {
+  display: inline-block;
+  margin-top: 0.75rem;
+  text-decoration: none;
+  text-align: center;
+}
+
 .quiz-dates .no-dates {
   padding: 1rem;
   text-align: center;
