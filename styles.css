@@ -232,7 +232,7 @@ main {
   margin-bottom: 0.2rem;
 }
 
-.date-register-btn {
+.date-details-inner .date-register-btn {
   display: block;
   margin-top: 0.75rem;
   text-decoration: none;
