@@ -53,8 +53,11 @@
       datesListEl.innerHTML = dates
         .map(function (d, i) {
           var detailsContent = d.details ? escapeHtml(d.details) : 'Keine weiteren Infos.';
+          var linkHtml = d.link
+            ? '<a href="' + escapeHtml(d.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">Anmelden</a>'
+            : '';
           var detailsHtml =
-            '<div class="date-details"><div class="date-details-inner">' + detailsContent + '</div></div>';
+            '<div class="date-details"><div class="date-details-inner">' + detailsContent + linkHtml + '</div></div>';
           return (
             '<li class="date-item" data-index="' +
             i +
