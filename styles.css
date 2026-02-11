@@ -237,6 +237,7 @@ main {
   margin-top: 0.75rem;
   text-decoration: none;
   text-align: center;
+  color: var(--bg);
 }
 
 .quiz-dates .no-dates {
