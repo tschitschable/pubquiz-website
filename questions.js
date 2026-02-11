@@ -1,16 +1,11 @@
 // Fragen hier anpassen. Jeder Eintrag: question und answer.
 window.PUB_QUIZ_QUESTIONS = [
-  { question: "Was ist die Hauptstadt von Frankreich?", answer: "Paris" },
-  { question: "Wie viele Kontinente gibt es?", answer: "Sieben" },
-  { question: "In welchem Jahr endete der Erste Weltkrieg?", answer: "1918" },
-  { question: "Welcher Planet wird der Rote Planet genannt?", answer: "Mars" },
-  { question: "Welcher Ozean ist der größte der Erde?", answer: "Pazifik" },
-  { question: "Wer schrieb Romeo und Julia?", answer: "William Shakespeare" },
+
   { question: "Was ist das chemische Symbol für Gold?", answer: "Au" },
   { question: "In welchem Land steht das Taj Mahal?", answer: "Indien" },
   { question: "Was ist die kleinste Primzahl?", answer: "2" },
   { question: "Welche Band sang 'Bohemian Rhapsody'?", answer: "Queen" },
-  { question: "Wo fährt die Familie in „Kevin – Allein zu Haus" in den Urlaub, als sie Kevin zurücklässt?", answer: "Paris" },
+  { question: "Wo fährt die Familie in Kevin – Allein zu Haus in den Urlaub, als sie Kevin zurücklässt?", answer: "Paris" },
   { question: "In welchem heutigen Land wurde der Heilige Nikolaus geboren?", answer: "Türkei" },
   { question: "Welcher Schokoladenriegel ist weltweit der Verkaufsschlager?", answer: "Snickers" },
   { question: "Welches Gebäck wird traditionell kopfüber gebacken?", answer: "Tarte Tatin" },
@@ -20,4 +15,14 @@ window.PUB_QUIZ_QUESTIONS = [
   { question: "Migros betrieb in den 1980er-Jahren eine Fast-Food-Kette. Wie hiess sie?", answer: "Migrolino" },
   { question: "Welche Organisation ging mit ihrer Topfkollekte in die Liste der „Gelebten Berner Traditionen" ein?", answer: "Heilsarmee" },
   { question: "Wie heisst der Hund des Grinch?", answer: "Max" },
+  { question: "Welcher Buchstabe steht im Morsealphabet für „· – – –“?", answer: "J" },
+  { question: "Wie heisst das Gas im Feuerzeug?", answer: "Butan" },
+  { question: "Wie heisst der laengste Fluss Europas?", answer: "Wolga" },
+  { question: "Welche Schweizer Stadt wurde 1536 von Bern erobert und blieb ueber 260 Jahre unter Berner Herrschaft?", answer: "Lausanne" },
+  { question: "Was ist das einzige Organ, das sich selbst regenerieren kann?", answer: "Leber" },
+  { question: "Was wurde im Paris des 19. Jahrhunderts als „das einzige freie Theater“ bezeichnet?", answer: "Morgue (Leichenhalle)" },
+  { question: "Wie heisst die KI von Google?", answer: "Gemini" },
+  { question: "Was bedeutet die Abkuerzung ASMR?", answer: "Autonomous Sensory Meridian Response" },
+  { question: "Fuer was wird ein Chasen ueblicherweise gebraucht?", answer: "Matcha-Herstellung" },
+  { question: "Welcher Komponist hat den Kanon „Leck mir im Arsch“ geschrieben?", answer: "Wolfgang Amadeus Mozart" },
 ];
