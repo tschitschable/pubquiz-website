@@ -211,8 +211,29 @@ main {
   margin: 0 1rem;
 }
 
+.date-details-inner a {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.date-details-inner a:hover {
+  color: var(--text-muted);
+}
+
+.date-info-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.date-info-list li {
+  margin-bottom: 0.2rem;
+}
+
 .date-register-btn {
-  display: inline-block;
+  display: block;
   margin-top: 0.75rem;
   text-decoration: none;
   text-align: center;

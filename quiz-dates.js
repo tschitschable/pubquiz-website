@@ -1,4 +1,5 @@
-// Einträge für Quiz-Abende. Jeder Eintrag: date, description, details (optional), link (optional, Anmelde-URL).
+// Einträge für Quiz-Abende.
+// Felder: date, description, details (Text) ODER detailsHtml (HTML), link (optional), linkText (optional).
 window.PUB_QUIZ_DATES = [
   {
     date: "Sa, 21. Feb 2026",
@@ -9,7 +10,14 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 25. Mär 2026",
     description: "Music Quiz mit Live Chor",
-    details: "Der Chor @vocs_bern, mit rund 15 Sänger:innen, begleitet euch durch fünf spannende, abwechslungsreiche Musikrate-Runden in der @vierte_wand_bern. Apéro ab 17.00 | Quiz 18.30 — 21:00. Eintritt CHF 15.— pro Person. Apéro+Burger (vegi oder fleisch): CHF 35.— pro Person. Gruppengrösse 2–6 Personen.",
-    link: "https://kurzlink.ch/68pt"
+    detailsHtml: 'Der Chor <a href="https://www.instagram.com/vocs_bern/" target="_blank" rel="noopener noreferrer">@vocs_bern</a>, mit rund 15 Sänger:innen, begleitet euch durch fünf spannende, abwechslungsreiche Musikrate-Runden in der <a href="https://www.instagram.com/vierte_wand_bern/" target="_blank" rel="noopener noreferrer">@vierte_wand_bern</a>.'
+      + '<ul class="date-info-list">'
+      + '<li>Apéro ab 17.00 | Quiz 18.30 — 21:00</li>'
+      + '<li>Eintritt CHF 15.— pro Person</li>'
+      + '<li>Apéro+Burger (vegi oder fleisch): CHF 35.— pro Person</li>'
+      + '<li>Gruppengrösse 2–6 Personen</li>'
+      + '</ul>',
+    link: "https://kurzlink.ch/68pt",
+    linkText: "Jetzt Tisch reservieren"
   },
 ];

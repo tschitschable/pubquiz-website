@@ -52,9 +52,10 @@
     } else {
       datesListEl.innerHTML = dates
         .map(function (d, i) {
-          var detailsContent = d.details ? escapeHtml(d.details) : 'Keine weiteren Infos.';
+          var detailsContent = d.detailsHtml ? d.detailsHtml : (d.details ? escapeHtml(d.details) : 'Keine weiteren Infos.');
+          var linkLabel = d.linkText ? escapeHtml(d.linkText) : 'Anmelden';
           var linkHtml = d.link
-            ? '<a href="' + escapeHtml(d.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">Anmelden</a>'
+            ? '<a href="' + escapeHtml(d.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' + linkLabel + '</a>'
             : '';
           var detailsHtml =
             '<div class="date-details"><div class="date-details-inner">' + detailsContent + linkHtml + '</div></div>';
