@@ -53,16 +53,19 @@ header {
   position: absolute;
   top: 0;
   right: 0;
-  background: none;
+  z-index: 10;
+  background: var(--card);
   border: 2px solid var(--border);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   transition: background 0.2s, border-color 0.2s;
 }
 
