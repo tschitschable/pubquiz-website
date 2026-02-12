@@ -4,8 +4,20 @@
   --text: #000000;
   --text-muted: #555555;
   --border: #e0e0e0;
+  --hover-bg: #f5f5f5;
+  --answer-bg: #f5f5f5;
   --radius: 10px;
   --radius-sm: 8px;
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #e8e8e8;
+  --text-muted: #a0a0a0;
+  --border: #333333;
+  --hover-bg: #2a2a2a;
+  --answer-bg: #2a2a2a;
 }
 
 * {
@@ -18,6 +30,7 @@ body {
   font-family: 'Outfit', sans-serif;
   background: var(--bg);
   color: var(--text);
+  transition: background 0.3s, color 0.3s;
 }
 
 .wrapper {
@@ -32,6 +45,42 @@ body {
 header {
   text-align: center;
   margin-bottom: 2rem;
+  position: relative;
+}
+
+/* Dark mode toggle */
+.dark-mode-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.dark-mode-toggle:hover {
+  background: var(--hover-bg);
+}
+
+.dark-mode-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.dark-mode-toggle .icon-moon { display: none; }
+[data-theme="dark"] .dark-mode-toggle .icon-sun { display: none; }
+[data-theme="dark"] .dark-mode-toggle .icon-moon { display: block; }
+
+[data-theme="dark"] .logo {
+  filter: invert(1);
 }
 
 .logo {
@@ -80,7 +129,7 @@ main {
   color: var(--text-muted);
   margin: 0 0 1rem;
   padding: 0.75rem 1rem;
-  background: #f5f5f5;
+  background: var(--answer-bg);
   border-radius: var(--radius-sm);
 }
 
@@ -125,8 +174,9 @@ main {
 }
 
 .btn-secondary:hover {
-  background: #f5f5f5;
+  background: var(--hover-bg);
 }
+
 
 .dates-section h2 {
   font-size: 1.35rem;
@@ -168,7 +218,7 @@ main {
 }
 
 .date-toggle:hover {
-  background: #f5f5f5;
+  background: var(--hover-bg);
 }
 
 .date-toggle::before {
@@ -240,6 +290,11 @@ main {
   color: var(--bg);
 }
 
+.date-details-inner .date-register-btn:hover {
+  color: var(--bg);
+  background: var(--text-muted);
+}
+
 .quiz-dates .no-dates {
   padding: 1rem;
   text-align: center;
@@ -284,4 +339,38 @@ footer p {
 .footer-instagram svg {
   width: 20px;
   height: 20px;
+}
+
+/* Past date styling */
+.date-item.is-past {
+  opacity: 0.45;
+  order: 99;
+}
+
+.date-item.is-past .date-toggle::before {
+  background: var(--text-muted);
+}
+
+.date-past-badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  background: var(--hover-bg);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Scroll fade-in animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
