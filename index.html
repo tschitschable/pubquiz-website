@@ -3,7 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PubQuiz BERN</title>
+  <title>Pub Quiz Bern – Quiz-Abende in Bern</title>
+  <meta name="description" content="Pub Quiz Bern: Regelmässige Quiz-Abende in Bern. Spiele in Teams von 2–6 Personen, teste dein Allgemeinwissen und gewinne Preise. Jetzt Termine ansehen und anmelden!">
+  <meta name="keywords" content="Pub Quiz, Bern, Quiz-Abend, Kneipenquiz, Trivia, Pub Quiz Bern, Quiznight, Bar Quiz, Allgemeinwissen, Teamquiz">
+  <meta name="author" content="Pub Quiz Bern">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.pubquiz-bern.ch/">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pub Quiz Bern – Quiz-Abende in Bern">
+  <meta property="og:description" content="Regelmässige Quiz-Abende in Bern. Spiele in Teams von 2–6 Personen, teste dein Allgemeinwissen und gewinne Preise.">
+  <meta property="og:url" content="https://www.pubquiz-bern.ch/">
+  <meta property="og:locale" content="de_CH">
+  <meta property="og:site_name" content="Pub Quiz Bern">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Pub Quiz Bern – Quiz-Abende in Bern">
+  <meta name="twitter:description" content="Regelmässige Quiz-Abende in Bern. Spiele in Teams, teste dein Wissen und gewinne Preise.">
+
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +35,7 @@
 <body>
   <div class="wrapper">
     <header>
+      <h1 class="sr-only">Pub Quiz Bern – Quiz-Abende in Bern</h1>
       <img src="assets/logo.png" alt="PubQuiz BERN" class="logo">
       <button type="button" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Dark Mode umschalten">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -57,5 +77,62 @@
   <script src="questions.js"></script>
   <script src="quiz-dates.js"></script>
   <script src="app.js"></script>
+
+  <!-- Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Pub Quiz Bern",
+    "url": "https://www.pubquiz-bern.ch",
+    "description": "Regelmässige Pub-Quiz-Abende in Bern. Spiele in Teams von 2–6 Personen, teste dein Allgemeinwissen und gewinne Preise.",
+    "sameAs": [
+      "https://www.instagram.com/pubquizbern/"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bern",
+      "addressCountry": "CH"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Pub Quiz Bern – Quiz im Eiger",
+    "startDate": "2026-02-21",
+    "location": {
+      "@type": "Place",
+      "name": "Restaurant Eiger",
+      "address": { "@type": "PostalAddress", "addressLocality": "Bern", "addressCountry": "CH" }
+    },
+    "organizer": { "@type": "Organization", "name": "Pub Quiz Bern", "url": "https://www.pubquiz-bern.ch" },
+    "description": "Du spielst in Teams von 2 bis 6 Personen um den Sieg. Die Moderator*innen von Pub Quiz Bern führen durch den Abend.",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Music Quiz mit Live Chor",
+    "startDate": "2026-03-25T17:00:00+01:00",
+    "location": {
+      "@type": "Place",
+      "name": "Die Vierte Wand",
+      "address": { "@type": "PostalAddress", "addressLocality": "Bern", "addressCountry": "CH" }
+    },
+    "organizer": { "@type": "Organization", "name": "Pub Quiz Bern", "url": "https://www.pubquiz-bern.ch" },
+    "description": "Der Chor @vocs_bern begleitet euch durch fünf spannende Musikrate-Runden. Apéro ab 17.00, Quiz 18.30–21:00.",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "offers": {
+      "@type": "Offer",
+      "price": "15",
+      "priceCurrency": "CHF",
+      "url": "https://kurzlink.ch/68pt"
+    }
+  }
+  </script>
 </body>
 </html>
