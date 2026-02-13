@@ -2,6 +2,9 @@
   const questions = window.PUB_QUIZ_QUESTIONS || [];
   const dates = window.PUB_QUIZ_DATES || [];
 
+  // Google Apps Script Web App URL — set this after deploying the script
+  var FORM_ENDPOINT = window.PUB_QUIZ_FORM_ENDPOINT || '';
+
   const questionEl = document.getElementById('question-text');
   const answerEl = document.getElementById('answer-text');
   const showAnswerBtn = document.getElementById('show-answer');
@@ -107,12 +110,42 @@
           var past = isPast(d.date);
           var detailsContent = d.detailsHtml ? d.detailsHtml : (d.details ? escapeHtml(d.details) : 'Keine weiteren Infos.');
           var linkLabel = d.linkText ? escapeHtml(d.linkText) : 'Anmelden';
-          var linkHtml = (!past && d.link)
-            ? '<a href="' + escapeHtml(d.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' + linkLabel + '</a>'
-            : '';
+          var actionHtml = '';
+          if (!past && d.form) {
+            actionHtml =
+              '<form class="register-form" data-event="' + escapeHtml(d.date + ' – ' + d.description) + '">' +
+              '<div class="form-group">' +
+              '<label>Kontaktperson</label>' +
+              '<input type="text" name="contact" required placeholder="Vor- und Nachname">' +
+              '</div>' +
+              '<div class="form-group">' +
+              '<label>E-Mail</label>' +
+              '<input type="email" name="email" required placeholder="name@beispiel.ch">' +
+              '</div>' +
+              '<div class="form-group">' +
+              '<label>Gruppengrösse</label>' +
+              '<select name="groupsize" required>' +
+              '<option value="">Bitte wählen</option>' +
+              '<option value="2">2 Personen</option>' +
+              '<option value="3">3 Personen</option>' +
+              '<option value="4">4 Personen</option>' +
+              '<option value="5">5 Personen</option>' +
+              '<option value="6">6 Personen</option>' +
+              '</select>' +
+              '</div>' +
+              '<div class="form-group">' +
+              '<label>Bemerkung <span class="optional">(optional)</span></label>' +
+              '<textarea name="note" rows="2" placeholder="Allergien, Spezialwünsche, etc."></textarea>' +
+              '</div>' +
+              '<button type="submit" class="btn btn-primary date-register-btn">Anmelden</button>' +
+              '<p class="form-status"></p>' +
+              '</form>';
+          } else if (!past && d.link) {
+            actionHtml = '<a href="' + escapeHtml(d.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' + linkLabel + '</a>';
+          }
           var pastBadge = past ? '<span class="date-past-badge">Vergangen</span>' : '';
           var detailsHtml =
-            '<div class="date-details"><div class="date-details-inner">' + detailsContent + linkHtml + '</div></div>';
+            '<div class="date-details"><div class="date-details-inner">' + detailsContent + actionHtml + '</div></div>';
           return (
             '<li class="date-item' + (past ? ' is-past' : '') + '" data-index="' +
             i +
@@ -141,6 +174,58 @@
           var isOpen = item.classList.toggle('is-open');
           btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
           details.style.maxHeight = isOpen ? details.scrollHeight + 'px' : '';
+        });
+      });
+
+      // --- Form submission handler ---
+      datesListEl.querySelectorAll('.register-form').forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var statusEl = form.querySelector('.form-status');
+          var submitBtn = form.querySelector('button[type="submit"]');
+          var eventName = form.getAttribute('data-event') || '';
+
+          if (!FORM_ENDPOINT) {
+            statusEl.textContent = 'Formular-Endpunkt nicht konfiguriert.';
+            statusEl.className = 'form-status form-error';
+            return;
+          }
+
+          var data = {
+            event: eventName,
+            contact: form.contact.value.trim(),
+            email: form.email.value.trim(),
+            groupsize: form.groupsize.value,
+            note: form.note.value.trim(),
+            timestamp: new Date().toISOString()
+          };
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Wird gesendet…';
+          statusEl.textContent = '';
+          statusEl.className = 'form-status';
+
+          fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          })
+          .then(function () {
+            statusEl.textContent = 'Anmeldung erfolgreich! Wir freuen uns auf euch.';
+            statusEl.className = 'form-status form-success';
+            form.reset();
+            submitBtn.textContent = 'Angemeldet ✓';
+            // Recalculate dropdown height
+            var details = form.closest('.date-details');
+            if (details) details.style.maxHeight = details.scrollHeight + 'px';
+          })
+          .catch(function () {
+            statusEl.textContent = 'Fehler beim Senden. Bitte versuche es erneut.';
+            statusEl.className = 'form-status form-error';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Anmelden';
+          });
         });
       });
     }

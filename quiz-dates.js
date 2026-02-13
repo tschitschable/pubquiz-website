@@ -1,5 +1,7 @@
 // Einträge für Quiz-Abende.
-// Felder: date, description, details (Text) ODER detailsHtml (HTML), link (optional), linkText (optional).
+// Felder: date, description, details (Text) ODER detailsHtml (HTML),
+//   link (optional, externe Anmelde-URL), linkText (optional),
+//   form: true (optional, zeigt ein integriertes Anmeldeformular statt externem Link).
 window.PUB_QUIZ_DATES = [
   {
     date: "Sa, 21. Feb 2026",
