@@ -162,6 +162,63 @@
     fadeEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
+  // --- Team Name Generator ---
+  var teamAdj = [
+    'Die schlauen', 'Die wilden', 'Die vergesslichen', 'Die legendären',
+    'Die müden', 'Die hungrigen', 'Die furchtlosen', 'Die verlorenen',
+    'Die geheimen', 'Die tapferen', 'Die listigen', 'Die goldenen',
+    'Die faulen', 'Die wütenden', 'Die lustigen', 'Die verrückten',
+    'Die rätselhaften', 'Die mächtigen', 'Die stillen', 'Die schnellen'
+  ];
+  var teamNoun = [
+    'Bären', 'Müntschi', 'Fondue-Könige', 'Grittibänze', 'Aareschwimmer',
+    'Gipfelstürmer', 'Zytglogge-Nerds', 'Käsebrains', 'Röstiritter',
+    'Schoggitiger', 'Matterhorn-Geister', 'Alpöhi-Gang', 'Bundeshaus-Bande',
+    'Emmentaler', 'Toblerone-Truppe', 'Zibelemärit-Helden', 'Bärner Meitschi',
+    'Gurten-Crew', 'Röstigraben-Rebellen', 'Stierebrunne-Stars',
+    'Biertrinker', 'Nerds', 'Einsteine', 'Glückspilze', 'Nachtschwärmer',
+    'Besserwisser', 'Warmduscher', 'Pfefferkörner', 'Traumtänzer'
+  ];
+
+  var teamStandalone = [
+    'Quiz on My Face', 'The Know-It-Ales', 'Trivia Newton John',
+    'We Came, We Saw, We Forgot', 'The Smartinis', 'Quiztopher Walken',
+    'Risky Quizness', 'The Quizzly Bears', "You're a Quizzard, Harry",
+    'I Thought This Was Speed Dating', 'Tequila Mockingbird',
+    'The Fact Hunt', 'Brainy McBrainface', 'The Inquizition',
+    'No Eye Deer', 'Sofa King Smart', "Let's Get Quizzical",
+    'The Answer Is Beer', 'Ctrl Alt Defeat', 'The Quizards of Odds',
+    "The Schrödingers Answers", 'Stack Overflowed', '404 Brain Not Found',
+    'Nerds of the Round Table', 'Die Bundesratslosen',
+    'Wilhelm Tell Us the Answer', 'Cheese, Wine and No Clue',
+    'The Clockwork Brains', 'Direct Democracy of Dumb Answers'
+  ];
+
+  var teamNameEl = document.getElementById('team-name');
+  var generateBtn = document.getElementById('generate-name');
+
+  function generateTeamName() {
+    // ~50% chance standalone name, ~50% generated combo
+    if (Math.random() < 0.5) {
+      return teamStandalone[Math.floor(Math.random() * teamStandalone.length)];
+    }
+    var adj = teamAdj[Math.floor(Math.random() * teamAdj.length)];
+    var noun = teamNoun[Math.floor(Math.random() * teamNoun.length)];
+    return adj + ' ' + noun;
+  }
+
+  if (generateBtn && teamNameEl) {
+    generateBtn.addEventListener('click', function () {
+      teamNameEl.style.opacity = '0';
+      setTimeout(function () {
+        teamNameEl.textContent = generateTeamName();
+        teamNameEl.style.opacity = '1';
+      }, 150);
+    });
+    // Show one on load
+    teamNameEl.textContent = generateTeamName();
+  }
+
   // Start mit einer zufälligen Frage
   setQuestion(getRandomQuestion());
 })();

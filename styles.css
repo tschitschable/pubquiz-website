@@ -357,6 +357,43 @@ footer p {
   height: 20px;
 }
 
+/* Team name generator */
+.teamname-section {
+  margin-top: 2rem;
+}
+
+.teamname-section h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.teamname-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+}
+
+.teamname-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.team-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: var(--text);
+  line-height: 1.3;
+  min-height: 1.8em;
+  transition: opacity 0.15s ease;
+}
+
 /* Past date styling */
 .date-item.is-past {
   opacity: 0.45;
