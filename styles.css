@@ -432,6 +432,76 @@ footer p {
   color: #ef9a9a;
 }
 
+/* Booking section */
+.booking-section {
+  margin-top: 2rem;
+}
+
+.booking-section h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.booking-intro {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+  line-height: 1.5;
+}
+
+.booking-dropdown {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.booking-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: none;
+  border: none;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.booking-toggle:hover {
+  background: var(--hover-bg);
+}
+
+.booking-toggle .chevron {
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.booking-toggle.open .chevron {
+  transform: rotate(90deg);
+}
+
+.booking-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.booking-details-inner {
+  padding: 0 1rem 1rem;
+}
+
+.booking-submit-btn {
+  width: 100%;
+  display: block;
+}
+
 /* Team name generator */
 .teamname-section {
   margin-top: 2rem;

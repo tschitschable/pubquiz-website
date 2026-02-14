@@ -73,6 +73,65 @@
           <button type="button" id="generate-name" class="btn btn-primary">Neuer Name</button>
         </div>
       </section>
+
+      <section class="booking-section fade-in">
+        <h2>Quiz für dein Event buchen</h2>
+        <p class="booking-intro">Teamanlass, Firmenfeier, Geburtstag oder Jubiläum? Wir bringen das Pub Quiz zu euch — massgeschneidert, moderiert und unvergesslich.</p>
+        <div class="booking-dropdown">
+          <button type="button" class="booking-toggle" id="booking-toggle">
+            <span>Anfrage stellen</span>
+            <span class="chevron">▸</span>
+          </button>
+          <div class="booking-details" id="booking-details">
+            <div class="booking-details-inner">
+              <form id="booking-form" class="booking-form">
+                <div class="form-group">
+                  <label>Firma / Organisation</label>
+                  <input type="text" name="company" required>
+                </div>
+                <div class="form-group">
+                  <label>Kontaktperson</label>
+                  <input type="text" name="contact" required placeholder="Vor- und Nachname">
+                </div>
+                <div class="form-group">
+                  <label>E-Mail</label>
+                  <input type="email" name="email" required placeholder="name@firma.ch">
+                </div>
+                <div class="form-group">
+                  <label>Telefon <span class="optional">(optional)</span></label>
+                  <input type="tel" name="phone" placeholder="+41 79 ...">
+                </div>
+                <div class="form-group">
+                  <label>Anlass</label>
+                  <select name="occasion" required>
+                    <option value="">Bitte wählen</option>
+                    <option value="Teamanlass">Teamanlass</option>
+                    <option value="Firmenfeier">Firmenfeier</option>
+                    <option value="Jubiläum">Jubiläum</option>
+                    <option value="Geburtstag">Geburtstag</option>
+                    <option value="Weihnachtsfeier">Weihnachtsfeier</option>
+                    <option value="Anderes">Anderes</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Anzahl Personen (ca.)</label>
+                  <input type="number" name="groupsize" required min="10" placeholder="z.B. 30">
+                </div>
+                <div class="form-group">
+                  <label>Wunschdatum <span class="optional">(optional)</span></label>
+                  <input type="date" name="eventdate">
+                </div>
+                <div class="form-group">
+                  <label>Nachricht <span class="optional">(optional)</span></label>
+                  <textarea name="message" rows="3" placeholder="Erzähl uns mehr über euren Anlass, Wünsche, Fragen..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary booking-submit-btn">Anfrage senden</button>
+                <p class="form-status"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>

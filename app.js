@@ -304,6 +304,76 @@
     teamNameEl.textContent = generateTeamName();
   }
 
+  // --- Booking Dropdown Toggle ---
+  var bookingToggle = document.getElementById('booking-toggle');
+  var bookingDetails = document.getElementById('booking-details');
+  if (bookingToggle && bookingDetails) {
+    bookingToggle.addEventListener('click', function () {
+      var isOpen = bookingDetails.style.maxHeight && bookingDetails.style.maxHeight !== '0px';
+      if (isOpen) {
+        bookingDetails.style.maxHeight = '0';
+        bookingToggle.classList.remove('open');
+      } else {
+        bookingDetails.style.maxHeight = bookingDetails.scrollHeight + 'px';
+        bookingToggle.classList.add('open');
+      }
+    });
+  }
+
+  // --- Booking Form ---
+  var bookingForm = document.getElementById('booking-form');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var statusEl = bookingForm.querySelector('.form-status');
+      var submitBtn = bookingForm.querySelector('button[type="submit"]');
+
+      if (!FORM_ENDPOINT) {
+        statusEl.textContent = 'Formular-Endpunkt nicht konfiguriert.';
+        statusEl.className = 'form-status form-error';
+        return;
+      }
+
+      var data = {
+        event: 'Buchungsanfrage',
+        company: bookingForm.company.value.trim(),
+        contact: bookingForm.contact.value.trim(),
+        email: bookingForm.email.value.trim(),
+        phone: bookingForm.phone.value.trim(),
+        occasion: bookingForm.occasion.value,
+        groupsize: bookingForm.groupsize.value,
+        eventdate: bookingForm.eventdate.value,
+        note: bookingForm.message.value.trim(),
+        timestamp: new Date().toISOString()
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird gesendet…';
+      statusEl.textContent = '';
+      statusEl.className = 'form-status';
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function () {
+        statusEl.textContent = 'Anfrage gesendet! Wir melden uns bei euch.';
+        statusEl.className = 'form-status form-success';
+        bookingForm.reset();
+        submitBtn.textContent = 'Gesendet ✓';
+        if (bookingDetails) bookingDetails.style.maxHeight = bookingDetails.scrollHeight + 'px';
+      })
+      .catch(function () {
+        statusEl.textContent = 'Fehler beim Senden. Bitte versuche es erneut.';
+        statusEl.className = 'form-status form-error';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Anfrage senden';
+      });
+    });
+  }
+
   // Start mit einer zufälligen Frage
   setQuestion(getRandomQuestion());
 })();

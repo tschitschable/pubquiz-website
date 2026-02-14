@@ -27,11 +27,11 @@ function getOrCreateSheet() {
   }
   var ss = SpreadsheetApp.create(SHEET_NAME);
   var sheet = ss.getActiveSheet();
-  sheet.appendRow(['Timestamp', 'Event', 'Teamname', 'Kontaktperson', 'E-Mail', 'Gruppengrösse', 'Bemerkung']);
+  sheet.appendRow(['Timestamp', 'Event', 'Firma', 'Kontaktperson', 'E-Mail', 'Telefon', 'Anlass', 'Gruppengrösse', 'Wunschdatum', 'Bemerkung']);
   // Bold header row
-  sheet.getRange(1, 1, 1, 7).setFontWeight('bold');
+  sheet.getRange(1, 1, 1, 10).setFontWeight('bold');
   // Auto-resize columns
-  for (var i = 1; i <= 7; i++) sheet.autoResizeColumn(i);
+  for (var i = 1; i <= 10; i++) sheet.autoResizeColumn(i);
   return ss;
 }
 
@@ -44,10 +44,13 @@ function doPost(e) {
     sheet.appendRow([
       data.timestamp || new Date().toISOString(),
       data.event || '',
-      data.teamname || '',
+      data.company || '',
       data.contact || '',
       data.email || '',
+      data.phone || '',
+      data.occasion || '',
       data.groupsize || '',
+      data.eventdate || '',
       data.note || ''
     ]);
 
