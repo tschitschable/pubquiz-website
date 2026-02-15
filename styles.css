@@ -61,12 +61,42 @@ header {
   position: relative;
 }
 
-/* Dark mode toggle */
-.dark-mode-toggle {
+/* Header actions (lang toggle + dark mode) */
+.header-actions {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--border);
+  color: var(--text);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.lang-toggle:hover {
+  background: var(--hover-bg);
+}
+
+/* Dark mode toggle */
+.dark-mode-toggle {
   background: var(--card);
   border: 2px solid var(--border);
   border-radius: 50%;
@@ -267,6 +297,13 @@ main {
   transition: max-height 0.25s ease-out;
 }
 
+.date-flyer {
+  width: 100%;
+  border-radius: calc(var(--radius) - 2px);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
 .date-details-inner {
   padding: 0 1rem 1rem;
   font-size: 0.95rem;
@@ -430,6 +467,187 @@ footer p {
 
 [data-theme="dark"] .form-error {
   color: #ef9a9a;
+}
+
+/* FAQ section */
+.faq-section {
+  margin-top: 2rem;
+}
+
+.faq-section h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-bottom: none;
+}
+
+.faq-item:first-child {
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.faq-item:last-child {
+  border-bottom: 1px solid var(--border);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.faq-item:only-child {
+  border-radius: var(--radius);
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: none;
+  border: none;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.faq-toggle:hover {
+  background: var(--hover-bg);
+}
+
+.faq-toggle .chevron {
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.faq-toggle.open .chevron {
+  transform: rotate(90deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-answer-inner {
+  padding: 0 1rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* Testimonials */
+.testimonials-section {
+  margin-top: 2rem;
+}
+
+.testimonials-section h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.testimonials-scroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem;
+}
+
+/* hide scrollbar but keep functionality */
+.testimonials-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.testimonials-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.testimonial-card {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-quote {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text);
+  flex: 1;
+  margin: 0 0 0.75rem;
+}
+
+.testimonial-author {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0 0 0.5rem;
+}
+
+.testimonial-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2em 0.6em;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.testimonial-badge--lokal {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.testimonial-badge--teilnehmer {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.testimonial-badge--firma {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+[data-theme="dark"] .testimonial-badge--lokal {
+  background: #1b5e20;
+  color: #a5d6a7;
+}
+
+[data-theme="dark"] .testimonial-badge--teilnehmer {
+  background: #0d47a1;
+  color: #90caf9;
+}
+
+[data-theme="dark"] .testimonial-badge--firma {
+  background: #bf360c;
+  color: #ffcc80;
 }
 
 /* Booking section */

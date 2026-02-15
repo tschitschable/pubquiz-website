@@ -1,0 +1,23 @@
+// English quiz questions. Each entry: question and answer.
+window.PUB_QUIZ_QUESTIONS = [
+  { question: "What is the chemical symbol for gold?", answer: "Au" },
+  { question: "In which country is the Taj Mahal?", answer: "India" },
+  { question: "What is the smallest prime number?", answer: "2" },
+  { question: "Which band sang 'Bohemian Rhapsody'?", answer: "Queen" },
+  { question: "Where does the family go on vacation in Home Alone?", answer: "Paris" },
+  { question: "In which modern-day country was Saint Nicholas born?", answer: "Turkey" },
+  { question: "What is the best-selling chocolate bar worldwide?", answer: "Snickers" },
+  { question: "Which pastry is traditionally baked upside down?", answer: "Tarte Tatin" },
+  { question: "Which Hollywood actor played six different roles in 'The Polar Express'?", answer: "Tom Hanks" },
+  { question: "Which Christmas ballet premiered in 1892?", answer: "The Nutcracker" },
+  { question: "What is the name of the Grinch's dog?", answer: "Max" },
+  { question: "Which letter stands for '.- - - -' in Morse code?", answer: "J" },
+  { question: "What is the gas used in lighters?", answer: "Butane" },
+  { question: "What is the longest river in Europe?", answer: "Volga" },
+  { question: "What is the only organ that can regenerate itself?", answer: "Liver" },
+  { question: "What does the abbreviation ASMR stand for?", answer: "Autonomous Sensory Meridian Response" },
+  { question: "Which composer wrote the canon 'Leck mir im Arsch' (Kiss my arse)?", answer: "Wolfgang Amadeus Mozart" },
+  { question: "What is the name of Google's AI?", answer: "Gemini" },
+  { question: "What is a chasen traditionally used for?", answer: "Making matcha tea" },
+  { question: "What was called 'the only free theatre' in 19th-century Paris?", answer: "The Morgue" },
+];

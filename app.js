@@ -1,6 +1,7 @@
 (function () {
   const questions = window.PUB_QUIZ_QUESTIONS || [];
   const dates = window.PUB_QUIZ_DATES || [];
+  var S = window.UI_STRINGS || {};
 
   // Google Apps Script Web App URL — set this after deploying the script
   var FORM_ENDPOINT = window.PUB_QUIZ_FORM_ENDPOINT || '';
@@ -41,7 +42,7 @@
 
   function setQuestion(q) {
     if (!q) {
-      questionEl.textContent = 'Noch keine Fragen. Füge welche in questions.js hinzu!';
+      questionEl.textContent = S.noQuestions || 'No questions yet.';
       answerEl.classList.add('hidden');
       answerEl.setAttribute('aria-hidden', 'true');
       answerEl.textContent = '';
@@ -96,7 +97,7 @@
   // --- Quiz-Daten als Dropdowns rendern ---
   if (datesListEl) {
     if (dates.length === 0) {
-      datesListEl.innerHTML = '<li class="no-dates">Noch keine Termine. Bearbeite quiz-dates.js für deine Quiz-Abende.</li>';
+      datesListEl.innerHTML = '<li class="no-dates">' + (S.noDates || '') + '</li>';
     } else {
       // Sort: upcoming first, past last
       var sortedDates = dates.slice().sort(function (a, b) {
@@ -108,44 +109,51 @@
       datesListEl.innerHTML = sortedDates
         .map(function (d, i) {
           var past = isPast(d.date);
-          var detailsContent = d.detailsHtml ? d.detailsHtml : (d.details ? escapeHtml(d.details) : 'Keine weiteren Infos.');
-          var linkLabel = d.linkText ? escapeHtml(d.linkText) : 'Anmelden';
+          var isEn = S.lang === 'en';
+          var imgPath = d.image ? (isEn ? '../' + d.image : d.image) : '';
+          var imageHtml = imgPath ? '<img class="date-flyer" src="' + escapeHtml(imgPath) + '" alt="' + escapeHtml(d.description) + '">' : '';
+          var htmlContent = isEn ? (d.detailsHtml_en || d.detailsHtml) : d.detailsHtml;
+          var textContent = isEn ? (d.details_en || d.details) : d.details;
+          var detailsContent = htmlContent ? htmlContent : (textContent ? escapeHtml(textContent) : (S.noDetails || ''));
+          var rawLinkText = isEn ? (d.linkText_en || d.linkText) : d.linkText;
+          var linkLabel = rawLinkText ? escapeHtml(rawLinkText) : (S.register || 'Register');
           var actionHtml = '';
           if (!past && d.form) {
+            var ppl = S.formGroupSizeOption || 'people';
             actionHtml =
               '<form class="register-form" data-event="' + escapeHtml(d.date + ' – ' + d.description) + '">' +
               '<div class="form-group">' +
-              '<label>Kontaktperson</label>' +
-              '<input type="text" name="contact" required placeholder="Vor- und Nachname">' +
+              '<label>' + (S.formContact || 'Contact') + '</label>' +
+              '<input type="text" name="contact" required placeholder="' + (S.formContactPlaceholder || '') + '">' +
               '</div>' +
               '<div class="form-group">' +
-              '<label>E-Mail</label>' +
-              '<input type="email" name="email" required placeholder="name@beispiel.ch">' +
+              '<label>' + (S.formEmail || 'Email') + '</label>' +
+              '<input type="email" name="email" required placeholder="' + (S.formEmailPlaceholder || '') + '">' +
               '</div>' +
               '<div class="form-group">' +
-              '<label>Gruppengrösse</label>' +
+              '<label>' + (S.formGroupSize || 'Group size') + '</label>' +
               '<select name="groupsize" required>' +
-              '<option value="">Bitte wählen</option>' +
-              '<option value="2">2 Personen</option>' +
-              '<option value="3">3 Personen</option>' +
-              '<option value="4">4 Personen</option>' +
-              '<option value="5">5 Personen</option>' +
-              '<option value="6">6 Personen</option>' +
+              '<option value="">' + (S.formGroupSizeSelect || 'Please choose') + '</option>' +
+              '<option value="2">2 ' + ppl + '</option>' +
+              '<option value="3">3 ' + ppl + '</option>' +
+              '<option value="4">4 ' + ppl + '</option>' +
+              '<option value="5">5 ' + ppl + '</option>' +
+              '<option value="6">6 ' + ppl + '</option>' +
               '</select>' +
               '</div>' +
               '<div class="form-group">' +
-              '<label>Bemerkung <span class="optional">(optional)</span></label>' +
-              '<textarea name="note" rows="2" placeholder="Allergien, Spezialwünsche, etc."></textarea>' +
+              '<label>' + (S.formNote || 'Note') + ' <span class="optional">' + (S.formOptional || '') + '</span></label>' +
+              '<textarea name="note" rows="2" placeholder="' + (S.formNotePlaceholder || '') + '"></textarea>' +
               '</div>' +
-              '<button type="submit" class="btn btn-primary date-register-btn">Anmelden</button>' +
+              '<button type="submit" class="btn btn-primary date-register-btn">' + (S.register || 'Register') + '</button>' +
               '<p class="form-status"></p>' +
               '</form>';
           } else if (!past && d.link) {
             actionHtml = '<a href="' + escapeHtml(d.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' + linkLabel + '</a>';
           }
-          var pastBadge = past ? '<span class="date-past-badge">Vergangen</span>' : '';
+          var pastBadge = past ? '<span class="date-past-badge">' + (S.pastBadge || 'Past') + '</span>' : '';
           var detailsHtml =
-            '<div class="date-details"><div class="date-details-inner">' + detailsContent + actionHtml + '</div></div>';
+            '<div class="date-details"><div class="date-details-inner">' + imageHtml + detailsContent + actionHtml + '</div></div>';
           return (
             '<li class="date-item' + (past ? ' is-past' : '') + '" data-index="' +
             i +
@@ -186,7 +194,7 @@
           var eventName = form.getAttribute('data-event') || '';
 
           if (!FORM_ENDPOINT) {
-            statusEl.textContent = 'Formular-Endpunkt nicht konfiguriert.';
+            statusEl.textContent = S.formEndpointError || 'Form endpoint not configured.';
             statusEl.className = 'form-status form-error';
             return;
           }
@@ -201,7 +209,7 @@
           };
 
           submitBtn.disabled = true;
-          submitBtn.textContent = 'Wird gesendet…';
+          submitBtn.textContent = S.formSending || 'Sending…';
           statusEl.textContent = '';
           statusEl.className = 'form-status';
 
@@ -212,19 +220,19 @@
             body: JSON.stringify(data)
           })
           .then(function () {
-            statusEl.textContent = 'Anmeldung erfolgreich! Wir freuen uns auf euch.';
+            statusEl.textContent = S.formRegSuccess || 'Registration successful!';
             statusEl.className = 'form-status form-success';
             form.reset();
-            submitBtn.textContent = 'Angemeldet ✓';
+            submitBtn.textContent = S.formRegDone || 'Registered ✓';
             // Recalculate dropdown height
             var details = form.closest('.date-details');
             if (details) details.style.maxHeight = details.scrollHeight + 'px';
           })
           .catch(function () {
-            statusEl.textContent = 'Fehler beim Senden. Bitte versuche es erneut.';
+            statusEl.textContent = S.formRegError || 'Error sending. Please try again.';
             statusEl.className = 'form-status form-error';
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Anmelden';
+            submitBtn.textContent = S.register || 'Register';
           });
         });
       });
@@ -304,6 +312,36 @@
     teamNameEl.textContent = generateTeamName();
   }
 
+  // --- Testimonials ---
+  var testimonialsEl = document.getElementById('testimonials');
+  var testimonials = window.PUB_QUIZ_TESTIMONIALS || [];
+  if (testimonialsEl && testimonials.length) {
+    var categoryLabels = { lokal: S.testimonialLokal || 'Venue', teilnehmer: S.testimonialTeilnehmer || 'Participant', firma: S.testimonialFirma || 'Corporate' };
+    testimonialsEl.innerHTML = testimonials.map(function (t) {
+      var badge = categoryLabels[t.category] || t.category;
+      return '<div class="testimonial-card">'
+        + '<p class="testimonial-quote">"' + t.quote + '"</p>'
+        + '<p class="testimonial-author">— ' + t.name + ', ' + t.affiliation + '</p>'
+        + '<span class="testimonial-badge testimonial-badge--' + t.category + '">' + badge + '</span>'
+        + '</div>';
+    }).join('');
+  }
+
+  // --- FAQ Accordion ---
+  document.querySelectorAll('.faq-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var answer = btn.nextElementSibling;
+      var isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+      if (isOpen) {
+        answer.style.maxHeight = '0';
+        btn.classList.remove('open');
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        btn.classList.add('open');
+      }
+    });
+  });
+
   // --- Booking Dropdown Toggle ---
   var bookingToggle = document.getElementById('booking-toggle');
   var bookingDetails = document.getElementById('booking-details');
@@ -329,13 +367,13 @@
       var submitBtn = bookingForm.querySelector('button[type="submit"]');
 
       if (!FORM_ENDPOINT) {
-        statusEl.textContent = 'Formular-Endpunkt nicht konfiguriert.';
+        statusEl.textContent = S.formEndpointError || 'Form endpoint not configured.';
         statusEl.className = 'form-status form-error';
         return;
       }
 
       var data = {
-        event: 'Buchungsanfrage',
+        event: S.bookingEvent || 'Booking inquiry',
         company: bookingForm.company.value.trim(),
         contact: bookingForm.contact.value.trim(),
         email: bookingForm.email.value.trim(),
@@ -348,7 +386,7 @@
       };
 
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Wird gesendet…';
+      submitBtn.textContent = S.bookingSending || 'Sending…';
       statusEl.textContent = '';
       statusEl.className = 'form-status';
 
@@ -359,17 +397,17 @@
         body: JSON.stringify(data)
       })
       .then(function () {
-        statusEl.textContent = 'Anfrage gesendet! Wir melden uns bei euch.';
+        statusEl.textContent = S.bookingSuccess || 'Inquiry sent!';
         statusEl.className = 'form-status form-success';
         bookingForm.reset();
-        submitBtn.textContent = 'Gesendet ✓';
+        submitBtn.textContent = S.bookingDone || 'Sent ✓';
         if (bookingDetails) bookingDetails.style.maxHeight = bookingDetails.scrollHeight + 'px';
       })
       .catch(function () {
-        statusEl.textContent = 'Fehler beim Senden. Bitte versuche es erneut.';
+        statusEl.textContent = S.bookingError || 'Error sending. Please try again.';
         statusEl.className = 'form-status form-error';
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Anfrage senden';
+        submitBtn.textContent = S.bookingSubmit || 'Send inquiry';
       });
     });
   }

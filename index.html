@@ -11,6 +11,8 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="canonical" href="https://www.pubquiz-bern.ch/">
+  <link rel="alternate" hreflang="de" href="https://www.pubquiz-bern.ch/">
+  <link rel="alternate" hreflang="en" href="https://www.pubquiz-bern.ch/en/">
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
@@ -39,10 +41,13 @@
     <header>
       <h1 class="sr-only">Pub Quiz Bern – Quiz-Abende in Bern</h1>
       <img src="assets/logo.png" alt="PubQuiz BERN" class="logo">
-      <button type="button" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Dark Mode umschalten">
+      <div class="header-actions">
+        <a href="en/" class="lang-toggle" aria-label="English">EN</a>
+        <button type="button" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Dark Mode umschalten">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+        </button>
+      </div>
     </header>
 
     <main>
@@ -71,6 +76,64 @@
         <div class="teamname-card">
           <p id="team-name" class="team-name">—</p>
           <button type="button" id="generate-name" class="btn btn-primary">Neuer Name</button>
+        </div>
+      </section>
+
+      <!-- Testimonials (aktivieren sobald echte Stimmen vorhanden)
+      <section class="testimonials-section fade-in">
+        <h2>Stimmen</h2>
+        <div class="testimonials-scroll" id="testimonials"></div>
+      </section>
+      -->
+
+      <section class="faq-section fade-in">
+        <h2>Häufige Fragen</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button type="button" class="faq-toggle">
+              <span>Wie läuft ein Quiz-Abend ab?</span>
+              <span class="chevron">▸</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Ihr kommt als Team (2–6 Personen) in die jeweilige Bar oder das Restaurant. Die Moderator:innen führen euch durch mehrere Runden mit Fragen aus verschiedenen Kategorien. Zwischendurch gibt es Pausen für Essen, Trinken und Diskussionen. Am Ende wird das Siegerteam gekürt.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-toggle">
+              <span>Muss ich mich anmelden?</span>
+              <span class="chevron">▸</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Ja, die Plätze sind begrenzt. Du kannst dich direkt über unsere Website anmelden — entweder über den Link beim jeweiligen Event oder über das integrierte Formular.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-toggle">
+              <span>Was kostet die Teilnahme?</span>
+              <span class="chevron">▸</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Das variiert je nach Veranstaltungsort. Die genauen Preise findest du jeweils bei den kommenden Quiz-Abenden. Essen und Getränke werden separat bestellt.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-toggle">
+              <span>Kann ich ein Quiz für meinen Anlass buchen?</span>
+              <span class="chevron">▸</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Ja! Wir organisieren massgeschneiderte Pub Quizzes für Firmenevents, Geburtstage, Weihnachtsfeiern und mehr. Schick uns einfach eine Anfrage über das Buchungsformular weiter unten.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-toggle">
+              <span>Brauche ich Vorwissen?</span>
+              <span class="chevron">▸</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Nein, die Fragen decken ein breites Spektrum ab — von Popkultur über Geografie bis Musik. Es geht vor allem um Spass und Teamwork, nicht um Perfektion.</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -146,7 +209,9 @@
 
   <script src="questions.js"></script>
   <script src="quiz-dates.js"></script>
+  <script src="testimonials.js"></script>
   <script src="form-config.js"></script>
+  <script src="ui-strings-de.js"></script>
   <script src="app.js"></script>
 
   <!-- Structured Data for Google -->

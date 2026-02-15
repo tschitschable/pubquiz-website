@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pub Quiz Bern – Quiz Nights in Bern</title>
+  <meta name="description" content="Pub Quiz Bern: Regular quiz nights in Bern, Switzerland. Play in teams of 2–6, test your knowledge and win prizes. See upcoming dates and register now!">
+  <meta name="keywords" content="Pub Quiz, Bern, Quiz Night, Trivia, Pub Quiz Bern, Bar Quiz, General Knowledge, Team Quiz, Switzerland">
+  <meta name="author" content="Pub Quiz Bern">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <link rel="canonical" href="https://www.pubquiz-bern.ch/en/">
+  <link rel="alternate" hreflang="de" href="https://www.pubquiz-bern.ch/">
+  <link rel="alternate" hreflang="en" href="https://www.pubquiz-bern.ch/en/">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pub Quiz Bern – Quiz Nights in Bern">
+  <meta property="og:description" content="Regular quiz nights in Bern. Play in teams of 2–6, test your knowledge and win prizes.">
+  <meta property="og:url" content="https://www.pubquiz-bern.ch/en/">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:site_name" content="Pub Quiz Bern">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Pub Quiz Bern – Quiz Nights in Bern">
+  <meta name="twitter:description" content="Regular quiz nights in Bern. Play in teams, test your knowledge and win prizes.">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <script>
+    // Apply theme immediately to prevent flash
+    (function(){var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t)}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.setAttribute('data-theme','dark')}})();
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1 class="sr-only">Pub Quiz Bern – Quiz Nights in Bern</h1>
+      <img src="../assets/logo.png" alt="PubQuiz BERN" class="logo">
+      <div class="header-actions">
+        <a href="../" class="lang-toggle" aria-label="Deutsch">DE</a>
+        <button type="button" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="question-card fade-in">
+        <p class="question-label">Question of the Moment</p>
+        <p id="question-text" class="question-text">Loading …</p>
+        <div class="answer-area">
+          <p id="answer-text" class="answer-text hidden" aria-hidden="true"></p>
+          <div class="buttons">
+            <button type="button" id="show-answer" class="btn btn-secondary">Show Answer</button>
+            <button type="button" id="next-question" class="btn btn-primary">Next Question</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="dates-section fade-in">
+        <h2>Upcoming Quiz Nights</h2>
+        <ul id="quiz-dates" class="quiz-dates">
+          <!-- Entries from quiz-dates.js -->
+        </ul>
+      </section>
+
+      <section class="teamname-section fade-in">
+        <h2>Team Name Generator</h2>
+        <p class="teamname-subtitle">No name? No problem.</p>
+        <div class="teamname-card">
+          <p id="team-name" class="team-name">—</p>
+          <button type="button" id="generate-name" class="btn btn-primary">New Name</button>
+        </div>
+      </section>
+
+      <!-- Testimonials (enable once real reviews are available)
+      <section class="testimonials-section fade-in">
+        <h2>Reviews</h2>
+        <div class="testimonials-scroll" id="testimonials"></div>
+      </section>
+      -->
+
+      <section class="faq-section fade-in">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button type="button" class="faq-toggle">
+              <span>How does a quiz night work?</span>
+              <span class="chevron">▸</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">You come as a team (2–6 people) to the bar or restaurant. The hosts guide you through several rounds of questions from different categories. There are breaks for food, drinks and discussions. At the end, the winning team is crowned.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-toggle">
+              <span>Do I need to register?</span>
+              <span class="chevron">▸</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Yes, spots are limited. You can register directly on our website — either via the link on the respective event or through the integrated form.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-toggle">
+              <span>How much does it cost?</span>
+              <span class="chevron">▸</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">It varies depending on the venue. You can find the exact prices listed with each upcoming quiz night. Food and drinks are ordered separately.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-toggle">
+              <span>Can I book a quiz for my event?</span>
+              <span class="chevron">▸</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">Yes! We organise custom pub quizzes for corporate events, birthdays, Christmas parties and more. Just send us an inquiry via the booking form below.</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-toggle">
+              <span>Do I need prior knowledge?</span>
+              <span class="chevron">▸</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">No, the questions cover a wide range — from pop culture to geography to music. It's all about fun and teamwork, not perfection.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="booking-section fade-in">
+        <h2>Book a Quiz for Your Event</h2>
+        <p class="booking-intro">Team outing, company party, birthday or anniversary? We bring the Pub Quiz to you — tailor-made, hosted and unforgettable.</p>
+        <div class="booking-dropdown">
+          <button type="button" class="booking-toggle" id="booking-toggle">
+            <span>Send an inquiry</span>
+            <span class="chevron">▸</span>
+          </button>
+          <div class="booking-details" id="booking-details">
+            <div class="booking-details-inner">
+              <form id="booking-form" class="booking-form">
+                <div class="form-group">
+                  <label>Company / Organisation</label>
+                  <input type="text" name="company" required>
+                </div>
+                <div class="form-group">
+                  <label>Contact person</label>
+                  <input type="text" name="contact" required placeholder="First and last name">
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" name="email" required placeholder="name@company.com">
+                </div>
+                <div class="form-group">
+                  <label>Phone <span class="optional">(optional)</span></label>
+                  <input type="tel" name="phone" placeholder="+41 79 ...">
+                </div>
+                <div class="form-group">
+                  <label>Occasion</label>
+                  <select name="occasion" required>
+                    <option value="">Please choose</option>
+                    <option value="Team outing">Team outing</option>
+                    <option value="Company party">Company party</option>
+                    <option value="Anniversary">Anniversary</option>
+                    <option value="Birthday">Birthday</option>
+                    <option value="Christmas party">Christmas party</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Number of people (approx.)</label>
+                  <input type="number" name="groupsize" required min="10" placeholder="e.g. 30">
+                </div>
+                <div class="form-group">
+                  <label>Preferred date <span class="optional">(optional)</span></label>
+                  <input type="date" name="eventdate">
+                </div>
+                <div class="form-group">
+                  <label>Message <span class="optional">(optional)</span></label>
+                  <textarea name="message" rows="3" placeholder="Tell us more about your event, wishes, questions..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary booking-submit-btn">Send inquiry</button>
+                <p class="form-status"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>See you at the next quiz!</p>
+      <a id="instagram-link" class="footer-instagram" href="https://www.instagram.com/pubquizbern/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+    </footer>
+  </div>
+
+  <script src="../questions-en.js"></script>
+  <script src="../quiz-dates.js"></script>
+  <script src="../testimonials.js"></script>
+  <script src="../form-config.js"></script>
+  <script src="../ui-strings-en.js"></script>
+  <script src="../app.js"></script>
+
+  <!-- Structured Data for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Pub Quiz Bern",
+    "url": "https://www.pubquiz-bern.ch",
+    "description": "Regular pub quiz nights in Bern, Switzerland. Play in teams of 2–6, test your knowledge and win prizes.",
+    "sameAs": [
+      "https://www.instagram.com/pubquizbern/"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bern",
+      "addressCountry": "CH"
+    }
+  }
+  </script>
+</body>
+</html>
