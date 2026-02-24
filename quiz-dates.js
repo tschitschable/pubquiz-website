@@ -35,4 +35,27 @@ window.PUB_QUIZ_DATES = [
     linkText: "Jetzt Tisch reservieren",
     linkText_en: "Reserve a table now"
   },
+  {
+    date: "Sa, 18. Apr 2026",
+    description: "Quiz im Restaurant Eiger",
+    detailsHtml: 'Nur Quiz (16:30 - 18:30, Bistrokarte)'
+      + '<ul class="date-info-list">'
+      + '<li>Quiz\'n\'dine (16:30 mit Abendessen nach dem Quiz)</li>'
+      + '<li>Gewohntes Abendessen ab 18:45</li>'
+      + '<li>Gewuenschte Option bei der Reservation angeben</li>'
+      + '<li>Startgebuehr CHF 5.00 / Person, 5 Runden</li>'
+      + '<li>Alle Infos unter herzhaft.swiss/Kalender</li>'
+      + '</ul>',
+    detailsHtml_en: 'Quiz only (16:30 - 18:30, bistro menu)'
+      + '<ul class="date-info-list">'
+      + '<li>Quiz\'n\'dine (16:30 with dinner after the quiz)</li>'
+      + '<li>Regular dinner service from 18:45</li>'
+      + '<li>Please specify your preferred option when booking</li>'
+      + '<li>Entry fee CHF 5.00 per person, 5 rounds</li>'
+      + '<li>All info at herzhaft.swiss/Kalender</li>'
+      + '</ul>',
+    link: "https://www.herzhaft.swiss/Kalender",
+    linkText: "Zur Reservation",
+    linkText_en: "Reservation details"
+  },
 ];
