@@ -55,7 +55,7 @@ window.PUB_QUIZ_DATES = [
       + '<li>Entry fee CHF 5.00 per person, 5 rounds</li>'
       + '<li>All info at herzhaft.swiss/Kalender</li>'
       + '</ul>',
-    link: "https://www.herzhaft.swiss/Kalender",
+    link: "https://mytools.aleno.me/reservations/v2.0/reservations.html?k=eyJrIjoid2l2dTVrM2lsNm15cnBiOWlwdzZ4bmViajhycnVkaWRpZ280bGZwODBsbzlhNGlweTEiLCJyIjoiNGhiMmY3QVhQWXhjM2U0RWoiLCJzIjoiaHR0cHM6Ly9teXRvb2xzLmFsZW5vLm1lLyJ9&skipFirstSteps=true&shifts=Pub+Quiz+im+April",
     linkText: "Zur Reservation",
     linkText_en: "Reservation details"
   },
