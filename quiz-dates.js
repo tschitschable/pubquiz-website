@@ -10,7 +10,11 @@ window.PUB_QUIZ_DATES = [
     description: "Quiz im Eiger",
     image: "assets/eiger-quiz-flyer.png",
     details: "Du spielst in Teams von 2 bis 6 Personen um den Sieg. Die Moderator*innen von Pub Quiz Bern führen durch den Abend, stellen Fragen und sorgen für Fragezeichen über den heissen Köpfen. Das Restaurantteam kümmert sich um dein leibliches Wohl und die nötige Erfrischung.",
+    detailsHtml: 'Du spielst in Teams von 2 bis 6 Personen um den Sieg. Die Moderator*innen von Pub Quiz Bern führen durch den Abend, stellen Fragen und sorgen für Fragezeichen über den heissen Köpfen. Das Restaurantteam kümmert sich um dein leibliches Wohl und die nötige Erfrischung.'
+      + '<p><a href="https://www.instagram.com/p/DVEQdc8jP9N/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer">Impressionen vom Quizabend</a></p>',
     details_en: "Play in teams of 2 to 6 for the win. The hosts from Pub Quiz Bern guide the evening, ask questions and make sure heads are spinning. The restaurant team takes care of food and drinks.",
+    detailsHtml_en: 'Play in teams of 2 to 6 for the win. The hosts from Pub Quiz Bern guide the evening, ask questions and make sure heads are spinning. The restaurant team takes care of food and drinks.'
+      + '<p><a href="https://www.instagram.com/p/DVEQdc8jP9N/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer">Impressions from the quiz night</a></p>',
     link: "https://kurzlink.ch/tduo"
   },
   {
