@@ -38,6 +38,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Sa, 18. Apr 2026",
     description: "Quiz im Restaurant Eiger",
+    image: "assets/eiger-quiz-apr-2026.png",
     detailsHtml: 'Nur Quiz (16:30 - 18:30, Bistrokarte)'
       + '<ul class="date-info-list">'
       + '<li>Quiz\'n\'dine (16:30 mit Abendessen nach dem Quiz)</li>'
