@@ -63,4 +63,28 @@ window.PUB_QUIZ_DATES = [
     linkText: "Zur Reservation",
     linkText_en: "Reservation details"
   },
+  {
+    date: "Mi, 29. Apr 2026",
+    description: "Pub Quiz im Löscher",
+    image: "assets/loescher-quiz-apr-2026.png",
+    detailsHtml: 'Pub Quiz im Löscher, 18:00 - 21:30'
+      + '<ul class="date-info-list">'
+      + '<li>18:00 - Eintrudeln</li>'
+      + '<li>18:30 - Beginn Quiz</li>'
+      + '<li>19:15 - 1., 2., 3. Runde</li>'
+      + '<li>19:15 - 20:30 Essen</li>'
+      + '<li>20:30 - 21:30 4., 5. Runde und Preisverleihung</li>'
+      + '</ul>',
+    detailsHtml_en: 'Pub Quiz at Löscher, 18:00 - 21:30'
+      + '<ul class="date-info-list">'
+      + '<li>18:00 - Arrival</li>'
+      + '<li>18:30 - Quiz starts</li>'
+      + '<li>19:15 - Rounds 1, 2, 3</li>'
+      + '<li>19:15 - 20:30 Dinner</li>'
+      + '<li>20:30 - 21:30 Rounds 4, 5 and prize ceremony</li>'
+      + '</ul>',
+    link: "https://services.gastronovi.com/restaurants/27002/reservierung/widget?entry=reservation&time=1777478400#1",
+    linkText: "Jetzt reservieren",
+    linkText_en: "Reserve now"
+  },
 ];
