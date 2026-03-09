@@ -798,6 +798,23 @@ footer p {
   flex-shrink: 0;
 }
 
+.date-soldout-badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  background: #c62828;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .date-soldout-badge {
+  background: #ef5350;
+  color: #1e1e1e;
+}
+
 /* Scroll fade-in animations */
 .fade-in {
   opacity: 0;

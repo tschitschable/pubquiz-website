@@ -109,6 +109,7 @@
       datesListEl.innerHTML = sortedDates
         .map(function (d, i) {
           var past = isPast(d.date);
+          var soldOut = !!d.soldOut;
           var isEn = S.lang === 'en';
           var imgPath = d.image ? (isEn ? '../' + d.image : d.image) : '';
           var imageHtml = imgPath ? '<img class="date-flyer" src="' + escapeHtml(imgPath) + '" alt="' + escapeHtml(d.description) + '">' : '';
@@ -118,7 +119,7 @@
           var rawLinkText = isEn ? (d.linkText_en || d.linkText) : d.linkText;
           var linkLabel = rawLinkText ? escapeHtml(rawLinkText) : (S.register || 'Register');
           var actionHtml = '';
-          if (!past && d.form) {
+          if (!past && !soldOut && d.form) {
             var ppl = S.formGroupSizeOption || 'people';
             actionHtml =
               '<form class="register-form" data-event="' + escapeHtml(d.date + ' – ' + d.description) + '">' +
@@ -148,10 +149,11 @@
               '<button type="submit" class="btn btn-primary date-register-btn">' + (S.register || 'Register') + '</button>' +
               '<p class="form-status"></p>' +
               '</form>';
-          } else if (!past && d.link) {
+          } else if (!past && !soldOut && d.link) {
             actionHtml = '<a href="' + escapeHtml(d.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' + linkLabel + '</a>';
           }
           var pastBadge = past ? '<span class="date-past-badge">' + (S.pastBadge || 'Past') + '</span>' : '';
+          var soldOutBadge = soldOut ? '<span class="date-soldout-badge">' + (S.soldOutBadge || 'Sold out') + '</span>' : '';
           var detailsHtml =
             '<div class="date-details"><div class="date-details-inner">' + imageHtml + detailsContent + actionHtml + '</div></div>';
           return (
@@ -165,6 +167,7 @@
             '<span class="description">' +
             escapeHtml(d.description || '') +
             '</span>' +
+            soldOutBadge +
             pastBadge +
             '<span class="chevron" aria-hidden="true">▼</span>' +
             '</button>' +

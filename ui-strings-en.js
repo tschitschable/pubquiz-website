@@ -6,6 +6,7 @@ window.UI_STRINGS = {
   noDetails: 'No further details.',
   register: 'Register',
   pastBadge: 'Past',
+  soldOutBadge: 'Sold out',
   formContact: 'Contact person',
   formContactPlaceholder: 'First and last name',
   formEmail: 'Email',
