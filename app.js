@@ -101,14 +101,14 @@
     } else {
       // Sort: upcoming first, past last
       var sortedDates = dates.slice().sort(function (a, b) {
-        var aPast = isPast(a.date) ? 1 : 0;
-        var bPast = isPast(b.date) ? 1 : 0;
+        var aPast = a.isPast ? 1 : (isPast(a.date) ? 1 : 0);
+        var bPast = b.isPast ? 1 : (isPast(b.date) ? 1 : 0);
         return aPast - bPast;
       });
 
       datesListEl.innerHTML = sortedDates
         .map(function (d, i) {
-          var past = isPast(d.date);
+          var past = !!d.isPast || isPast(d.date);
           var soldOut = !!d.soldOut;
           var isEn = S.lang === 'en';
           var imgPath = d.image ? (isEn ? '../' + d.image : d.image) : '';
@@ -118,6 +118,10 @@
           var detailsContent = htmlContent ? htmlContent : (textContent ? escapeHtml(textContent) : (S.noDetails || ''));
           var rawLinkText = isEn ? (d.linkText_en || d.linkText) : d.linkText;
           var linkLabel = rawLinkText ? escapeHtml(rawLinkText) : (S.register || 'Register');
+          var impressionsLabel = isEn
+            ? (d.impressionsText_en || d.impressionsText || 'Impressions')
+            : (d.impressionsText || 'Impressionen');
+          var impressionsLink = d.impressionsLink || '';
           var actionHtml = '';
           if (!past && !soldOut && d.form) {
             var ppl = S.formGroupSizeOption || 'people';
@@ -151,6 +155,11 @@
               '</form>';
           } else if (!past && !soldOut && d.link) {
             actionHtml = '<a href="' + escapeHtml(d.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' + linkLabel + '</a>';
+          } else if (past && impressionsLink) {
+            actionHtml =
+              '<a href="' + escapeHtml(impressionsLink) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' +
+              escapeHtml(impressionsLabel) +
+              '</a>';
           }
           var pastBadge = past ? '<span class="date-past-badge">' + (S.pastBadge || 'Past') + '</span>' : '';
           var soldOutBadge = soldOut ? '<span class="date-soldout-badge">' + (S.soldOutBadge || 'Sold out') + '</span>' : '';

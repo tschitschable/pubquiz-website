@@ -21,6 +21,7 @@ window.PUB_QUIZ_DATES = [
     date: "Mi, 25. Mär 2026",
     description: "Music Quiz mit Live Chor",
     soldOut: true,
+    isPast: true,
     image: "assets/music-quiz-flyer.png",
     detailsHtml: 'Der Chor <a href="https://www.instagram.com/vocs_bern/" target="_blank" rel="noopener noreferrer">@vocs_bern</a>, mit rund 15 Sänger:innen, begleitet euch durch fünf spannende, abwechslungsreiche Musikrate-Runden in der <a href="https://www.instagram.com/vierte_wand_bern/" target="_blank" rel="noopener noreferrer">@vierte_wand_bern</a>.'
       + '<ul class="date-info-list">'
@@ -38,7 +39,10 @@ window.PUB_QUIZ_DATES = [
       + '</ul>',
     link: "https://kurzlink.ch/68pt",
     linkText: "Jetzt Tisch reservieren",
-    linkText_en: "Reserve a table now"
+    linkText_en: "Reserve a table now",
+    impressionsLink: "https://www.instagram.com/p/DWV_kx7DFDI/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==",
+    impressionsText: "Impressionen",
+    impressionsText_en: "Impressions"
   },
   {
     date: "Sa, 18. Apr 2026",
