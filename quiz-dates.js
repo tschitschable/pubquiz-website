@@ -70,6 +70,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 29. Apr 2026",
     description: "Pub Quiz im Löscher",
+    soldOut: true,
     image: "assets/loescher-quiz-apr-2026.png",
     detailsHtml: 'Pub Quiz im Löscher, 18:00 - 21:30'
       + '<ul class="date-info-list">'
