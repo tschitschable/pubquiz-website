@@ -92,4 +92,30 @@ window.PUB_QUIZ_DATES = [
     linkText: "Jetzt reservieren",
     linkText_en: "Reserve now"
   },
+  {
+    date: "Mi, 13. Mai 2026",
+    description: "Pub Quiz im Schöngrün",
+    image: "assets/schoengruen-quiz-mai-2026.png",
+    detailsHtml: 'Am Mittwoch, 13. Mai 2026 um 18:00 findet das erste Pub Quiz im Schöngrün statt. Neben dem Quizzen gibt es Fish and Chips (auch vegi verfügbar).'
+      + '<ul class="date-info-list">'
+      + '<li>18:00 – Eintrudeln</li>'
+      + '<li>18:30 – Beginn Quiz</li>'
+      + '<li>18:30 – 19:15 1., 2., 3. Runde</li>'
+      + '<li>19:15 – 20:00 Pause</li>'
+      + '<li>20:00 – 21:00 4., 5. Runde und Preisverleihung</li>'
+      + '<li>Kosten: CHF 5.— pro Person fürs Quiz</li>'
+      + '</ul>',
+    detailsHtml_en: 'On Wednesday, 13 May 2026 at 18:00, the first Pub Quiz at Schöngrün takes place. Besides quizzing, there will be fish and chips (vegetarian option available).'
+      + '<ul class="date-info-list">'
+      + '<li>18:00 – Arrival</li>'
+      + '<li>18:30 – Quiz starts</li>'
+      + '<li>18:30 – 19:15 Rounds 1, 2, 3</li>'
+      + '<li>19:15 – 20:00 Break</li>'
+      + '<li>20:00 – 21:00 Rounds 4, 5 and prize ceremony</li>'
+      + '<li>Cost: CHF 5.— per person for the quiz</li>'
+      + '</ul>',
+    link: "https://reserve.foratable.com/?restaurantHash=ea411d3e2e580a69763eff39eceaefbc#!/table",
+    linkText: "Jetzt anmelden",
+    linkText_en: "Register now"
+  },
 ];
