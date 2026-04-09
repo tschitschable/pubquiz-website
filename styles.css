@@ -394,6 +394,21 @@ footer p {
   height: 20px;
 }
 
+.footer-links {
+  margin-top: 0.85rem;
+  font-size: 0.9rem;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-links a:hover {
+  color: var(--text);
+}
+
 /* Registration form */
 .register-form {
   margin-top: 0.75rem;
@@ -825,4 +840,58 @@ footer p {
 .fade-in.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.legal-page {
+  max-width: 760px;
+}
+
+.legal-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  line-height: 1.6;
+}
+
+.legal-card h1 {
+  margin: 0 0 1rem;
+  font-size: 1.7rem;
+}
+
+.legal-card h2 {
+  margin: 1.3rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.legal-card h3 {
+  margin: 1.1rem 0 0.45rem;
+  font-size: 1rem;
+}
+
+.legal-card p {
+  margin: 0.35rem 0;
+}
+
+.legal-note {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--hover-bg);
+  font-size: 0.95rem;
+}
+
+.legal-list {
+  margin: 0.35rem 0 0.5rem 1.2rem;
+  padding: 0;
+}
+
+.legal-list li {
+  margin: 0.2rem 0;
+}
+
+.legal-back-link {
+  margin-top: 1.25rem;
+  display: inline-block;
 }

@@ -16,12 +16,9 @@
   // --- Dark Mode ---
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
   }
 
   (function initTheme() {
-    var saved = localStorage.getItem('theme');
-    if (saved) { applyTheme(saved); return; }
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       applyTheme('dark');
     }
