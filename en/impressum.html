@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal Notice – Pub Quiz Bern</title>
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <script>
+    // Apply theme immediately to prevent flash
+    (function(){if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.setAttribute('data-theme','dark')}})();
+  </script>
+</head>
+<body>
+  <div class="wrapper legal-page">
+    <header>
+      <div class="header-actions">
+        <a href="../impressum.html" class="lang-toggle" aria-label="Deutsch">DE</a>
+        <button type="button" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+      <a href="./" aria-label="Back to homepage">
+        <img src="../assets/logo.png" alt="PubQuiz BERN" class="logo">
+      </a>
+    </header>
+
+    <main>
+      <section class="legal-card">
+        <h1>Legal Notice & Privacy Policy</h1>
+        <p>Note: Pub Quiz Bern is a private hobby project without commercial goals.</p>
+
+        <h2>Provider</h2>
+        <p>Pub Quiz Bern<br>Jannis Valaulta<br>Kyburgstrasse 5<br>3013 Bern<br>Switzerland</p>
+
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:pubquizbern@gmail.com">pubquizbern@gmail.com</a></p>
+
+        <h2>Privacy Policy</h2>
+
+        <h3>1. General Information</h3>
+        <p>This privacy policy explains how personal data is processed in connection with the Pub Quiz Bern website.</p>
+        <p>Personal data means any information relating to an identified or identifiable person.</p>
+
+        <h3>2. Controller</h3>
+        <p>Responsible for data processing:</p>
+        <p>Jannis Valaulta<br>Kyburgstrasse 5<br>3013 Bern<br>Switzerland</p>
+        <p>Email: <a href="mailto:pubquizbern@gmail.com">pubquizbern@gmail.com</a></p>
+
+        <h3>3. Collection and Processing of Personal Data</h3>
+        <p>We process personal data only as far as necessary to provide our website, content and services.</p>
+        <p>This may include in particular:</p>
+        <ul class="legal-list">
+          <li>IP address</li>
+          <li>Date and time of access</li>
+          <li>Browser type and version</li>
+          <li>Operating system used</li>
+          <li>Referrer URL</li>
+        </ul>
+        <p>This data may be collected automatically when visiting the website.</p>
+
+        <h3>4. Contact</h3>
+        <p>If you contact us by email, your details are stored to process your request and for potential follow-up questions.</p>
+        <p>We do not share this data without your consent.</p>
+
+        <h3>5. Hosting</h3>
+        <p>Our website is hosted by an external service provider. Personal data may be stored on the provider's servers.</p>
+
+        <h3>6. Data Subject Rights</h3>
+        <p>Under applicable data protection law, you have the right to:</p>
+        <ul class="legal-list">
+          <li>Information about your stored data</li>
+          <li>Correction of inaccurate data</li>
+          <li>Deletion of your data</li>
+          <li>Restriction of processing</li>
+        </ul>
+        <p>If you have questions, you can contact us at any time.</p>
+
+        <h3>7. Changes</h3>
+        <p>We may update this privacy policy at any time. The current version published on this website applies.</p>
+        <p>Last updated: April 2026</p>
+
+        <h2>Disclaimer</h2>
+        <p>All content on this website has been created with great care. However, we assume no liability for the accuracy, completeness or timeliness of the content.</p>
+
+        <h2>Copyright</h2>
+        <p>The content and works published on this website are subject to copyright. Any reproduction, editing or distribution requires prior written consent of the rights holders.</p>
+
+        <a class="legal-back-link" href="./">Back to homepage</a>
+      </section>
+    </main>
+  </div>
+  <script>
+    (function () {
+      var darkToggle = document.getElementById('dark-mode-toggle');
+      if (!darkToggle) return;
+      darkToggle.addEventListener('click', function () {
+        var current = document.documentElement.getAttribute('data-theme');
+        document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+      });
+    })();
+  </script>
+</body>
+</html>
