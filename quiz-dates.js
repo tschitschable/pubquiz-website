@@ -96,6 +96,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 13. Mai 2026",
     description: "Pub Quiz im Schöngrün",
+    soldOut: true,
     image: "assets/schoengruen-quiz-mai-2026.png",
     detailsHtml: 'Am Mittwoch, 13. Mai 2026 um 18:00 findet das erste Pub Quiz im Schöngrün statt. Neben dem Quizzen gibt es Fish and Chips (auch vegi verfügbar).'
       + '<ul class="date-info-list">'
