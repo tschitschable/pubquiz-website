@@ -10,6 +10,7 @@
   <meta name="robots" content="index, follow">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="preload" href="assets/logo.png" as="image">
   <link rel="canonical" href="https://www.pubquiz-bern.ch/">
   <link rel="alternate" hreflang="de" href="https://www.pubquiz-bern.ch/">
   <link rel="alternate" hreflang="en" href="https://www.pubquiz-bern.ch/en/">
@@ -30,7 +31,8 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
   <script>
     // Apply theme immediately to prevent flash
     (function(){if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.setAttribute('data-theme','dark')}})();
@@ -40,7 +42,7 @@
   <div class="wrapper">
     <header>
       <h1 class="sr-only">Pub Quiz Bern – Quiz-Abende in Bern</h1>
-      <img src="assets/logo.png" alt="PubQuiz BERN" class="logo">
+      <img src="assets/logo.png" alt="PubQuiz BERN" class="logo" width="220" height="220" fetchpriority="high" decoding="async">
       <div class="header-actions">
         <a href="en/" class="lang-toggle" aria-label="English">EN</a>
         <button type="button" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="Dark Mode umschalten">
@@ -155,12 +157,12 @@
     </footer>
   </div>
 
-  <script src="questions.js"></script>
-  <script src="quiz-dates.js"></script>
-  <script src="testimonials.js"></script>
-  <script src="form-config.js"></script>
-  <script src="ui-strings-de.js"></script>
-  <script src="app.js"></script>
+  <!-- Wenn die Sektion «Stimmen» aktiv ist: <script src="testimonials.js" defer></script> vor form-config einfügen. -->
+  <script src="questions.js" defer></script>
+  <script src="quiz-dates.js" defer></script>
+  <script src="form-config.js" defer></script>
+  <script src="ui-strings-de.js" defer></script>
+  <script src="app.js" defer></script>
 
   <!-- Structured Data for Google -->
   <script type="application/ld+json">

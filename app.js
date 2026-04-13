@@ -109,7 +109,13 @@
           var soldOut = !!d.soldOut;
           var isEn = S.lang === 'en';
           var imgPath = d.image ? (isEn ? '../' + d.image : d.image) : '';
-          var imageHtml = imgPath ? '<img class="date-flyer" src="' + escapeHtml(imgPath) + '" alt="' + escapeHtml(d.description) + '">' : '';
+          var imageHtml = imgPath
+            ? '<img class="date-flyer" src="' +
+              escapeHtml(imgPath) +
+              '" alt="' +
+              escapeHtml(d.description) +
+              '" loading="lazy" decoding="async">'
+            : '';
           var htmlContent = isEn ? (d.detailsHtml_en || d.detailsHtml) : d.detailsHtml;
           var textContent = isEn ? (d.details_en || d.details) : d.details;
           var detailsContent = htmlContent ? htmlContent : (textContent ? escapeHtml(textContent) : (S.noDetails || ''));
