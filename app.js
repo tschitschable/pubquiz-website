@@ -158,14 +158,32 @@
               '</form>';
           } else if (!past && !soldOut && d.link) {
             actionHtml = '<a href="' + escapeHtml(d.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' + linkLabel + '</a>';
-          } else if (past && impressionsLink) {
-            actionHtml =
-              '<a href="' + escapeHtml(impressionsLink) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' +
-              escapeHtml(impressionsLabel) +
-              '</a>';
+          } else if (past) {
+            var pastButtons = [];
+            if (impressionsLink) {
+              pastButtons.push(
+                '<a href="' +
+                  escapeHtml(impressionsLink) +
+                  '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' +
+                  escapeHtml(impressionsLabel) +
+                  '</a>'
+              );
+            }
+            if (d.secondaryLink) {
+              var secRaw = isEn ? (d.secondaryLinkText_en || d.secondaryLinkText) : d.secondaryLinkText;
+              var secLabel = escapeHtml(secRaw || 'Link');
+              pastButtons.push(
+                '<a href="' +
+                  escapeHtml(d.secondaryLink) +
+                  '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' +
+                  secLabel +
+                  '</a>'
+              );
+            }
+            if (pastButtons.length) actionHtml = pastButtons.join('');
           }
           var pastBadge = past ? '<span class="date-past-badge">' + (S.pastBadge || 'Past') + '</span>' : '';
-          var soldOutBadge = soldOut ? '<span class="date-soldout-badge">' + (S.soldOutBadge || 'Sold out') + '</span>' : '';
+          var soldOutBadge = soldOut && !past ? '<span class="date-soldout-badge">' + (S.soldOutBadge || 'Sold out') + '</span>' : '';
           var detailsHtml =
             '<div class="date-details"><div class="date-details-inner">' + imageHtml + detailsContent + actionHtml + '</div></div>';
           return (

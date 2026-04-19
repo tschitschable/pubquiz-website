@@ -348,6 +348,10 @@ main {
   background: var(--text-muted);
 }
 
+.date-details-inner .date-register-btn + .date-register-btn {
+  margin-top: 0.5rem;
+}
+
 .quiz-dates .no-dates {
   padding: 1rem;
   text-align: center;

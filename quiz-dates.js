@@ -4,6 +4,8 @@
 //   link (optional, externe Anmelde-URL), linkText (optional),
 //   form: true (optional, zeigt ein integriertes Anmeldeformular statt externem Link).
 // Für Englisch: details_en, detailsHtml_en, linkText_en (optional).
+// Vergangene Events: impressionsLink + impressionsText(_en) optional;
+//   secondaryLink + secondaryLinkText(_en) optional (zweiter Button, z. B. Instagram).
 window.PUB_QUIZ_DATES = [
   {
     date: "Sa, 21. Feb 2026",
@@ -64,9 +66,9 @@ window.PUB_QUIZ_DATES = [
       + '<li>Entry fee CHF 5.00 per person, 5 rounds</li>'
       + '<li>All info at herzhaft.swiss/Kalender</li>'
       + '</ul>',
-    impressionsLink: "https://www.instagram.com/p/DXTiXoDjDYM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    impressionsText: "Impressionen",
-    impressionsText_en: "Impressions"
+    secondaryLink: "https://www.instagram.com/p/DXTiXoDjDYM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    secondaryLinkText: "Impressionen auf Instagram",
+    secondaryLinkText_en: "Impressions on Instagram"
   },
   {
     date: "Mi, 29. Apr 2026",
