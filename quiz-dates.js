@@ -46,7 +46,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Sa, 18. Apr 2026",
     description: "Quiz im Restaurant Eiger",
-    soldOut: true,
+    isPast: true,
     image: "assets/eiger-quiz-apr-2026.png",
     detailsHtml: 'Nur Quiz (16:30 - 18:30, Bistrokarte)'
       + '<ul class="date-info-list">'
@@ -64,9 +64,9 @@ window.PUB_QUIZ_DATES = [
       + '<li>Entry fee CHF 5.00 per person, 5 rounds</li>'
       + '<li>All info at herzhaft.swiss/Kalender</li>'
       + '</ul>',
-    link: "https://mytools.aleno.me/reservations/v2.0/reservations.html?k=eyJrIjoid2l2dTVrM2lsNm15cnBiOWlwdzZ4bmViajhycnVkaWRpZ280bGZwODBsbzlhNGlweTEiLCJyIjoiNGhiMmY3QVhQWXhjM2U0RWoiLCJzIjoiaHR0cHM6Ly9teXRvb2xzLmFsZW5vLm1lLyJ9&skipFirstSteps=true&shifts=Pub+Quiz+im+April",
-    linkText: "Zur Reservation",
-    linkText_en: "Reservation details"
+    impressionsLink: "https://www.instagram.com/p/DXTiXoDjDYM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    impressionsText: "Impressionen",
+    impressionsText_en: "Impressions"
   },
   {
     date: "Mi, 29. Apr 2026",
