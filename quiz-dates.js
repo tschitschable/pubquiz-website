@@ -125,6 +125,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 20. Mai 2026",
     description: "Pub Quiz in der Halle 16",
+    soldOut: true,
     image: "assets/halle16-quiz-mai-2026.png",
     detailsHtml: 'Am Mittwoch, 20.5. um 18:00 findet das erste Pub Quiz in der Halle 16 statt.'
       + '<p>Neben dem Quiz gibt es verschiedene Food-Staende, von Pizza zu Indisch, Burger oder Libanesisch.</p>'
