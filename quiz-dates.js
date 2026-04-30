@@ -73,7 +73,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 29. Apr 2026",
     description: "Pub Quiz im Löscher",
-    soldOut: true,
+    isPast: true,
     image: "assets/loescher-quiz-apr-2026.png",
     detailsHtml: 'Pub Quiz im Löscher, 18:00 - 21:30'
       + '<ul class="date-info-list">'
@@ -91,9 +91,9 @@ window.PUB_QUIZ_DATES = [
       + '<li>19:15 - 20:30 Dinner</li>'
       + '<li>20:30 - 21:30 Rounds 4, 5 and prize ceremony</li>'
       + '</ul>',
-    link: "https://services.gastronovi.com/restaurants/27002/reservierung/widget?entry=reservation&time=1777478400#1",
-    linkText: "Jetzt reservieren",
-    linkText_en: "Reserve now"
+    impressionsLink: "https://www.instagram.com/p/DXvzktXDNIf/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    impressionsText: "Impressionen",
+    impressionsText_en: "Impressions"
   },
   {
     date: "Mi, 13. Mai 2026",
