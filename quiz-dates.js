@@ -123,6 +123,36 @@ window.PUB_QUIZ_DATES = [
     impressionsText_en: "Impressions"
   },
   {
+    date: "Mi, 1. Jul 2026",
+    description: "Pub Quiz im Schöngrün",
+    image: "assets/schoengruen-quiz-jul-2026.png",
+    detailsHtml: 'Am Mittwoch, 1. Juli um 18:00 findet das nächste Pub Quiz im Schöngrün statt.'
+      + '<p>Neben dem Quizzen gibt es lokales Tartar (auch in Vegi).</p>'
+      + '<p>Programm:</p>'
+      + '<ul class="date-info-list">'
+      + '<li>18:00 – Eintrudeln</li>'
+      + '<li>18:30 – Beginn Quiz</li>'
+      + '<li>18:30 – 19:15 1., 2. Runde</li>'
+      + '<li>19:15 – 20:00 Essen &amp; Pause</li>'
+      + '<li>20:00 – 21:00 3., 4., 5. Runde und Preisverleihung</li>'
+      + '<li>Kosten: 5 CHF pro Person fürs Quiz</li>'
+      + '</ul>',
+    detailsHtml_en: 'On Wednesday, 1 July at 18:00, the next Pub Quiz at Schöngrün takes place.'
+      + '<p>Alongside the quiz, there is local tartare (vegetarian option available).</p>'
+      + '<p>Program:</p>'
+      + '<ul class="date-info-list">'
+      + '<li>18:00 – Arrival</li>'
+      + '<li>18:30 – Quiz starts</li>'
+      + '<li>18:30 – 19:15 Rounds 1 and 2</li>'
+      + '<li>19:15 – 20:00 Dinner &amp; break</li>'
+      + '<li>20:00 – 21:00 Rounds 3, 4, 5 and prize ceremony</li>'
+      + '<li>Cost: CHF 5 per person for the quiz</li>'
+      + '</ul>',
+    link: "https://reserve.foratable.com/?restaurantHash=ea411d3e2e580a69763eff39eceaefbc#!/table",
+    linkText: "Jetzt anmelden",
+    linkText_en: "Register now"
+  },
+  {
     date: "Mi, 20. Mai 2026",
     description: "Pub Quiz in der Halle 16",
     soldOut: true,
