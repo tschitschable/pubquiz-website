@@ -3,6 +3,7 @@ window.UI_STRINGS = {
   lang: 'de',
   noQuestions: 'Noch keine Fragen. Füge welche in questions.js hinzu!',
   noDates: 'Noch keine Termine. Bearbeite quiz-dates.js für deine Quiz-Abende.',
+  pastDatesFolder: 'Vergangene Quiz-Abende',
   noDetails: 'Keine weiteren Infos.',
   register: 'Anmelden',
   pastBadge: 'Vergangen',

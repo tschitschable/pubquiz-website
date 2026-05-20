@@ -91,132 +91,173 @@
     return d ? d < new Date() : false;
   }
 
+  function buildDateItemHtml(d) {
+    var past = !!d.isPast || isPast(d.date);
+    var soldOut = !!d.soldOut;
+    var isEn = S.lang === 'en';
+    var imgPath = d.image ? (isEn ? '../' + d.image : d.image) : '';
+    var imageHtml = imgPath
+      ? '<img class="date-flyer" src="' +
+        escapeHtml(imgPath) +
+        '" alt="' +
+        escapeHtml(d.description) +
+        '" loading="lazy" decoding="async">'
+      : '';
+    var htmlContent = isEn ? (d.detailsHtml_en || d.detailsHtml) : d.detailsHtml;
+    var textContent = isEn ? (d.details_en || d.details) : d.details;
+    var detailsContent = htmlContent ? htmlContent : (textContent ? escapeHtml(textContent) : (S.noDetails || ''));
+    var rawLinkText = isEn ? (d.linkText_en || d.linkText) : d.linkText;
+    var linkLabel = rawLinkText ? escapeHtml(rawLinkText) : (S.register || 'Register');
+    var impressionsLabel = isEn
+      ? (d.impressionsText_en || d.impressionsText || 'Impressions')
+      : (d.impressionsText || 'Impressionen');
+    var impressionsLink = d.impressionsLink || '';
+    var actionHtml = '';
+    if (!past && !soldOut && d.form) {
+      var ppl = S.formGroupSizeOption || 'people';
+      actionHtml =
+        '<form class="register-form" data-event="' + escapeHtml(d.date + ' – ' + d.description) + '">' +
+        '<div class="form-group">' +
+        '<label>' + (S.formContact || 'Contact') + '</label>' +
+        '<input type="text" name="contact" required placeholder="' + (S.formContactPlaceholder || '') + '">' +
+        '</div>' +
+        '<div class="form-group">' +
+        '<label>' + (S.formEmail || 'Email') + '</label>' +
+        '<input type="email" name="email" required placeholder="' + (S.formEmailPlaceholder || '') + '">' +
+        '</div>' +
+        '<div class="form-group">' +
+        '<label>' + (S.formGroupSize || 'Group size') + '</label>' +
+        '<select name="groupsize" required>' +
+        '<option value="">' + (S.formGroupSizeSelect || 'Please choose') + '</option>' +
+        '<option value="2">2 ' + ppl + '</option>' +
+        '<option value="3">3 ' + ppl + '</option>' +
+        '<option value="4">4 ' + ppl + '</option>' +
+        '<option value="5">5 ' + ppl + '</option>' +
+        '<option value="6">6 ' + ppl + '</option>' +
+        '</select>' +
+        '</div>' +
+        '<div class="form-group">' +
+        '<label>' + (S.formNote || 'Note') + ' <span class="optional">' + (S.formOptional || '') + '</span></label>' +
+        '<textarea name="note" rows="2" placeholder="' + (S.formNotePlaceholder || '') + '"></textarea>' +
+        '</div>' +
+        '<button type="submit" class="btn btn-primary date-register-btn">' + (S.register || 'Register') + '</button>' +
+        '<p class="form-status"></p>' +
+        '</form>';
+    } else if (!past && !soldOut && d.link) {
+      actionHtml = '<a href="' + escapeHtml(d.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' + linkLabel + '</a>';
+    } else if (past) {
+      var pastButtons = [];
+      if (impressionsLink) {
+        pastButtons.push(
+          '<a href="' +
+            escapeHtml(impressionsLink) +
+            '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' +
+            escapeHtml(impressionsLabel) +
+            '</a>'
+        );
+      }
+      if (d.secondaryLink) {
+        var secRaw = isEn ? (d.secondaryLinkText_en || d.secondaryLinkText) : d.secondaryLinkText;
+        var secLabel = escapeHtml(secRaw || 'Link');
+        pastButtons.push(
+          '<a href="' +
+            escapeHtml(d.secondaryLink) +
+            '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' +
+            secLabel +
+            '</a>'
+        );
+      }
+      if (pastButtons.length) actionHtml = pastButtons.join('');
+    }
+    var pastBadge = past ? '<span class="date-past-badge">' + (S.pastBadge || 'Past') + '</span>' : '';
+    var soldOutBadge = soldOut && !past ? '<span class="date-soldout-badge">' + (S.soldOutBadge || 'Sold out') + '</span>' : '';
+    var detailsHtml =
+      '<div class="date-details"><div class="date-details-inner">' + imageHtml + detailsContent + actionHtml + '</div></div>';
+    return (
+      '<li class="date-item' + (past ? ' is-past' : '') + '">' +
+      '<button type="button" class="date-toggle" aria-expanded="false">' +
+      '<span class="date">' +
+      escapeHtml(d.date) +
+      '</span>' +
+      '<span class="description">' +
+      escapeHtml(d.description || '') +
+      '</span>' +
+      soldOutBadge +
+      pastBadge +
+      '<span class="chevron" aria-hidden="true">▼</span>' +
+      '</button>' +
+      detailsHtml +
+      '</li>'
+    );
+  }
+
+  function initDateItemToggles(root) {
+    root.querySelectorAll('.date-item').forEach(function (item) {
+      var btn = item.querySelector('.date-toggle');
+      var details = item.querySelector('.date-details');
+      if (!btn || !details) return;
+      btn.addEventListener('click', function () {
+        var isOpen = item.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        details.style.maxHeight = isOpen ? details.scrollHeight + 'px' : '';
+        var pastPanel = item.closest('.dates-past-folder-panel');
+        if (pastPanel) {
+          var folder = pastPanel.closest('.dates-past-folder');
+          if (folder && folder.classList.contains('is-open')) {
+            pastPanel.style.maxHeight = pastPanel.scrollHeight + 'px';
+          }
+        }
+      });
+    });
+  }
+
   // --- Quiz-Daten als Dropdowns rendern ---
   if (datesListEl) {
     if (dates.length === 0) {
-      datesListEl.innerHTML = '<li class="no-dates">' + (S.noDates || '') + '</li>';
+      datesListEl.innerHTML = '<ul class="quiz-dates"><li class="no-dates">' + (S.noDates || '') + '</li></ul>';
     } else {
-      // Sort: upcoming first, past last
-      var sortedDates = dates.slice().sort(function (a, b) {
-        var aPast = a.isPast ? 1 : (isPast(a.date) ? 1 : 0);
-        var bPast = b.isPast ? 1 : (isPast(b.date) ? 1 : 0);
-        return aPast - bPast;
+      var upcoming = [];
+      var pastDates = [];
+      dates.forEach(function (d) {
+        if (d.isPast || isPast(d.date)) pastDates.push(d);
+        else upcoming.push(d);
       });
 
-      datesListEl.innerHTML = sortedDates
-        .map(function (d, i) {
-          var past = !!d.isPast || isPast(d.date);
-          var soldOut = !!d.soldOut;
-          var isEn = S.lang === 'en';
-          var imgPath = d.image ? (isEn ? '../' + d.image : d.image) : '';
-          var imageHtml = imgPath
-            ? '<img class="date-flyer" src="' +
-              escapeHtml(imgPath) +
-              '" alt="' +
-              escapeHtml(d.description) +
-              '" loading="lazy" decoding="async">'
-            : '';
-          var htmlContent = isEn ? (d.detailsHtml_en || d.detailsHtml) : d.detailsHtml;
-          var textContent = isEn ? (d.details_en || d.details) : d.details;
-          var detailsContent = htmlContent ? htmlContent : (textContent ? escapeHtml(textContent) : (S.noDetails || ''));
-          var rawLinkText = isEn ? (d.linkText_en || d.linkText) : d.linkText;
-          var linkLabel = rawLinkText ? escapeHtml(rawLinkText) : (S.register || 'Register');
-          var impressionsLabel = isEn
-            ? (d.impressionsText_en || d.impressionsText || 'Impressions')
-            : (d.impressionsText || 'Impressionen');
-          var impressionsLink = d.impressionsLink || '';
-          var actionHtml = '';
-          if (!past && !soldOut && d.form) {
-            var ppl = S.formGroupSizeOption || 'people';
-            actionHtml =
-              '<form class="register-form" data-event="' + escapeHtml(d.date + ' – ' + d.description) + '">' +
-              '<div class="form-group">' +
-              '<label>' + (S.formContact || 'Contact') + '</label>' +
-              '<input type="text" name="contact" required placeholder="' + (S.formContactPlaceholder || '') + '">' +
-              '</div>' +
-              '<div class="form-group">' +
-              '<label>' + (S.formEmail || 'Email') + '</label>' +
-              '<input type="email" name="email" required placeholder="' + (S.formEmailPlaceholder || '') + '">' +
-              '</div>' +
-              '<div class="form-group">' +
-              '<label>' + (S.formGroupSize || 'Group size') + '</label>' +
-              '<select name="groupsize" required>' +
-              '<option value="">' + (S.formGroupSizeSelect || 'Please choose') + '</option>' +
-              '<option value="2">2 ' + ppl + '</option>' +
-              '<option value="3">3 ' + ppl + '</option>' +
-              '<option value="4">4 ' + ppl + '</option>' +
-              '<option value="5">5 ' + ppl + '</option>' +
-              '<option value="6">6 ' + ppl + '</option>' +
-              '</select>' +
-              '</div>' +
-              '<div class="form-group">' +
-              '<label>' + (S.formNote || 'Note') + ' <span class="optional">' + (S.formOptional || '') + '</span></label>' +
-              '<textarea name="note" rows="2" placeholder="' + (S.formNotePlaceholder || '') + '"></textarea>' +
-              '</div>' +
-              '<button type="submit" class="btn btn-primary date-register-btn">' + (S.register || 'Register') + '</button>' +
-              '<p class="form-status"></p>' +
-              '</form>';
-          } else if (!past && !soldOut && d.link) {
-            actionHtml = '<a href="' + escapeHtml(d.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' + linkLabel + '</a>';
-          } else if (past) {
-            var pastButtons = [];
-            if (impressionsLink) {
-              pastButtons.push(
-                '<a href="' +
-                  escapeHtml(impressionsLink) +
-                  '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' +
-                  escapeHtml(impressionsLabel) +
-                  '</a>'
-              );
-            }
-            if (d.secondaryLink) {
-              var secRaw = isEn ? (d.secondaryLinkText_en || d.secondaryLinkText) : d.secondaryLinkText;
-              var secLabel = escapeHtml(secRaw || 'Link');
-              pastButtons.push(
-                '<a href="' +
-                  escapeHtml(d.secondaryLink) +
-                  '" target="_blank" rel="noopener noreferrer" class="btn btn-primary date-register-btn">' +
-                  secLabel +
-                  '</a>'
-              );
-            }
-            if (pastButtons.length) actionHtml = pastButtons.join('');
-          }
-          var pastBadge = past ? '<span class="date-past-badge">' + (S.pastBadge || 'Past') + '</span>' : '';
-          var soldOutBadge = soldOut && !past ? '<span class="date-soldout-badge">' + (S.soldOutBadge || 'Sold out') + '</span>' : '';
-          var detailsHtml =
-            '<div class="date-details"><div class="date-details-inner">' + imageHtml + detailsContent + actionHtml + '</div></div>';
-          return (
-            '<li class="date-item' + (past ? ' is-past' : '') + '" data-index="' +
-            i +
-            '">' +
-            '<button type="button" class="date-toggle" aria-expanded="false">' +
-            '<span class="date">' +
-            escapeHtml(d.date) +
-            '</span>' +
-            '<span class="description">' +
-            escapeHtml(d.description || '') +
-            '</span>' +
-            soldOutBadge +
-            pastBadge +
-            '<span class="chevron" aria-hidden="true">▼</span>' +
-            '</button>' +
-            detailsHtml +
-            '</li>'
-          );
-        })
-        .join('');
+      var html = '<ul class="quiz-dates quiz-dates--upcoming">';
+      html += upcoming.length
+        ? upcoming.map(buildDateItemHtml).join('')
+        : '<li class="no-dates">' + (S.noDates || '') + '</li>';
+      html += '</ul>';
 
-      datesListEl.querySelectorAll('.date-item').forEach(function (item) {
-        var btn = item.querySelector('.date-toggle');
-        var details = item.querySelector('.date-details');
-        if (!btn || !details) return;
-        btn.addEventListener('click', function () {
-          var isOpen = item.classList.toggle('is-open');
-          btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-          details.style.maxHeight = isOpen ? details.scrollHeight + 'px' : '';
+      if (pastDates.length) {
+        var folderLabel =
+          escapeHtml((S.pastDatesFolder || 'Past quiz nights') + ' (' + pastDates.length + ')');
+        html +=
+          '<div class="dates-past-group">' +
+          '<div class="dates-past-folder">' +
+          '<button type="button" class="dates-past-folder-toggle" aria-expanded="false">' +
+          '<span>' + folderLabel + '</span>' +
+          '<span class="chevron" aria-hidden="true">▸</span>' +
+          '</button>' +
+          '<div class="dates-past-folder-panel">' +
+          '<ul class="quiz-dates quiz-dates--past">' +
+          pastDates.map(buildDateItemHtml).join('') +
+          '</ul></div></div></div>';
+      }
+
+      datesListEl.innerHTML = html;
+      initDateItemToggles(datesListEl);
+
+      var pastFolderToggle = datesListEl.querySelector('.dates-past-folder-toggle');
+      var pastFolderPanel = datesListEl.querySelector('.dates-past-folder-panel');
+      if (pastFolderToggle && pastFolderPanel) {
+        pastFolderToggle.addEventListener('click', function () {
+          var folder = pastFolderToggle.closest('.dates-past-folder');
+          var isOpen = folder.classList.toggle('is-open');
+          pastFolderToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          pastFolderPanel.style.maxHeight = isOpen ? pastFolderPanel.scrollHeight + 'px' : '0';
         });
-      });
+      }
 
       // --- Form submission handler ---
       datesListEl.querySelectorAll('.register-form').forEach(function (form) {

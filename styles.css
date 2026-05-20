@@ -232,6 +232,63 @@ main {
   letter-spacing: -0.02em;
 }
 
+.dates-lists {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.dates-past-group {
+  margin-top: 1.25rem;
+}
+
+.dates-past-folder {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.dates-past-folder-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: none;
+  border: none;
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.dates-past-folder-toggle:hover {
+  background: var(--hover-bg);
+}
+
+.dates-past-folder-toggle .chevron {
+  color: var(--text-muted);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.dates-past-folder.is-open .dates-past-folder-toggle .chevron {
+  transform: rotate(90deg);
+}
+
+.dates-past-folder-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.dates-past-folder-panel .quiz-dates--past {
+  padding: 0 0.75rem 0.75rem;
+}
+
 .quiz-dates {
   list-style: none;
   padding: 0;
