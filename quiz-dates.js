@@ -155,7 +155,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 20. Mai 2026",
     description: "Pub Quiz in der Halle 16",
-    soldOut: true,
+    isPast: true,
     image: "assets/halle16-quiz-mai-2026.png",
     detailsHtml: 'Am Mittwoch, 20.5. um 18:00 findet das erste Pub Quiz in der Halle 16 statt.'
       + '<p>Neben dem Quiz gibt es verschiedene Food-Staende, von Pizza zu Indisch, Burger oder Libanesisch.</p>'
@@ -181,8 +181,8 @@ window.PUB_QUIZ_DATES = [
       + '<li>20:00 - 21:00 Rounds 3, 4, 5 and prize ceremony</li>'
       + '<li>Cost: CHF 5 per person for the quiz</li>'
       + '</ul>',
-    link: "https://www.instagram.com/pubquizbern/",
-    linkText: "Via Instagram DM anmelden",
-    linkText_en: "Register via Instagram DM"
+    impressionsLink: "https://www.instagram.com/p/DYmVI0tilUF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    impressionsText: "Impressionen",
+    impressionsText_en: "Impressions"
   },
 ];
