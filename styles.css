@@ -246,7 +246,7 @@ main {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .dates-past-folder-toggle {
@@ -282,7 +282,11 @@ main {
 .dates-past-folder-panel {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.35s ease;
+}
+
+.dates-past-folder.is-open .dates-past-folder-panel {
+  overflow: visible;
 }
 
 .dates-past-folder-panel .quiz-dates--past {

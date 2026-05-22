@@ -191,6 +191,34 @@
     );
   }
 
+  function expandCollapsible(el) {
+    if (!el) return;
+    el.style.maxHeight = el.scrollHeight + 'px';
+    window.setTimeout(function () {
+      if (el.scrollHeight > parseInt(el.style.maxHeight, 10) || 0) {
+        el.style.maxHeight = el.scrollHeight + 'px';
+      }
+      el.style.maxHeight = 'none';
+    }, 280);
+  }
+
+  function collapseCollapsible(el) {
+    if (!el) return;
+    el.style.maxHeight = el.scrollHeight + 'px';
+    window.requestAnimationFrame(function () {
+      el.style.maxHeight = '0';
+    });
+  }
+
+  function syncPastFolderPanel(item) {
+    var pastPanel = item ? item.closest('.dates-past-folder-panel') : null;
+    if (!pastPanel) return;
+    var folder = pastPanel.closest('.dates-past-folder');
+    if (folder && folder.classList.contains('is-open')) {
+      pastPanel.style.maxHeight = 'none';
+    }
+  }
+
   function initDateItemToggles(root) {
     root.querySelectorAll('.date-item').forEach(function (item) {
       var btn = item.querySelector('.date-toggle');
@@ -199,14 +227,12 @@
       btn.addEventListener('click', function () {
         var isOpen = item.classList.toggle('is-open');
         btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        details.style.maxHeight = isOpen ? details.scrollHeight + 'px' : '';
-        var pastPanel = item.closest('.dates-past-folder-panel');
-        if (pastPanel) {
-          var folder = pastPanel.closest('.dates-past-folder');
-          if (folder && folder.classList.contains('is-open')) {
-            pastPanel.style.maxHeight = pastPanel.scrollHeight + 'px';
-          }
+        if (isOpen) {
+          expandCollapsible(details);
+        } else {
+          collapseCollapsible(details);
         }
+        syncPastFolderPanel(item);
       });
     });
   }
@@ -251,11 +277,29 @@
       var pastFolderToggle = datesListEl.querySelector('.dates-past-folder-toggle');
       var pastFolderPanel = datesListEl.querySelector('.dates-past-folder-panel');
       if (pastFolderToggle && pastFolderPanel) {
+        var pastFolder = pastFolderToggle.closest('.dates-past-folder');
         pastFolderToggle.addEventListener('click', function () {
-          var folder = pastFolderToggle.closest('.dates-past-folder');
-          var isOpen = folder.classList.toggle('is-open');
-          pastFolderToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-          pastFolderPanel.style.maxHeight = isOpen ? pastFolderPanel.scrollHeight + 'px' : '0';
+          var willOpen = !pastFolder.classList.contains('is-open');
+          pastFolder.classList.toggle('is-open', willOpen);
+          pastFolderToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+          if (willOpen) {
+            pastFolderPanel.style.maxHeight = 'none';
+            var fullHeight = pastFolderPanel.scrollHeight;
+            pastFolderPanel.style.maxHeight = '0';
+            window.requestAnimationFrame(function () {
+              pastFolderPanel.style.maxHeight = fullHeight + 'px';
+              window.setTimeout(function () {
+                if (pastFolder.classList.contains('is-open')) {
+                  pastFolderPanel.style.maxHeight = 'none';
+                }
+              }, 320);
+            });
+          } else {
+            pastFolderPanel.style.maxHeight = pastFolderPanel.scrollHeight + 'px';
+            window.requestAnimationFrame(function () {
+              pastFolderPanel.style.maxHeight = '0';
+            });
+          }
         });
       }
 
@@ -298,9 +342,10 @@
             statusEl.className = 'form-status form-success';
             form.reset();
             submitBtn.textContent = S.formRegDone || 'Registered ✓';
-            // Recalculate dropdown height
             var details = form.closest('.date-details');
-            if (details) details.style.maxHeight = details.scrollHeight + 'px';
+            var dateItem = form.closest('.date-item');
+            if (details) expandCollapsible(details);
+            syncPastFolderPanel(dateItem);
           })
           .catch(function () {
             statusEl.textContent = S.formRegError || 'Error sending. Please try again.';
