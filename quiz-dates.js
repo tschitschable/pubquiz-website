@@ -125,6 +125,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 1. Jul 2026",
     description: "Pub Quiz im Schöngrün",
+    soldOut: true,
     image: "assets/schoengruen-quiz-jul-2026.png",
     detailsHtml: 'Am Mittwoch, 1. Juli um 18:00 findet das nächste Pub Quiz im Schöngrün statt.'
       + '<p>Neben dem Quizzen gibt es lokales Tartar (auch in Vegi).</p>'
