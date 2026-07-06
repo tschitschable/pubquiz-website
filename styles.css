@@ -413,6 +413,18 @@ main {
   margin-top: 0.5rem;
 }
 
+.dates-upcoming-notice {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
 .quiz-dates .no-dates {
   padding: 1rem;
   text-align: center;

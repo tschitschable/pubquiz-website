@@ -249,11 +249,14 @@
         else upcoming.push(d);
       });
 
-      var html = '<ul class="quiz-dates quiz-dates--upcoming">';
-      html += upcoming.length
-        ? upcoming.map(buildDateItemHtml).join('')
-        : '<li class="no-dates">' + (S.noDates || '') + '</li>';
-      html += '</ul>';
+      var html = '';
+      if (upcoming.length) {
+        html += '<ul class="quiz-dates quiz-dates--upcoming">' +
+          upcoming.map(buildDateItemHtml).join('') +
+          '</ul>';
+      } else {
+        html += '<p class="dates-upcoming-notice">' + escapeHtml(S.upcomingNotice || S.noDates || '') + '</p>';
+      }
 
       if (pastDates.length) {
         var folderLabel =
