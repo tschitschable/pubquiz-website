@@ -154,6 +154,22 @@ window.PUB_QUIZ_DATES = [
     impressionsText_en: "Impressions"
   },
   {
+    date: "Mi, 19. Aug 2026",
+    description: "Pub Quiz im Löscher",
+    soldOut: true,
+    image: "assets/loescher-quiz-aug-2026.png",
+    detailsHtml: 'Pub Quiz im Restaurant Bar Löscher, 18:30 – 21:00'
+      + '<ul class="date-info-list">'
+      + '<li>Gruppengrösse 2–6 Personen pro Team</li>'
+      + '<li>Kosten: CHF 5.— pro Person fürs Quiz</li>'
+      + '</ul>',
+    detailsHtml_en: 'Pub Quiz at Restaurant Bar Löscher, 18:30 – 21:00'
+      + '<ul class="date-info-list">'
+      + '<li>Group size 2–6 people per team</li>'
+      + '<li>Cost: CHF 5.— per person for the quiz</li>'
+      + '</ul>'
+  },
+  {
     date: "Mi, 20. Mai 2026",
     description: "Pub Quiz in der Halle 16",
     isPast: true,
