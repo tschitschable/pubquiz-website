@@ -170,6 +170,38 @@ window.PUB_QUIZ_DATES = [
       + '</ul>'
   },
   {
+    date: "Mi, 16. Sept 2026",
+    description: "Pub Quiz in der Halle 16",
+    image: "assets/halle16-quiz-sept-2026.png",
+    detailsHtml: 'Am Mittwoch, 16.9. um 18:00 findet das Pub Quiz in der Halle 16 statt.'
+      + '<p>Neben dem Quiz gibt es verschiedene Food-Staende, von Pizza zu Indisch, Burger oder Libanesisch.</p>'
+      + '<p>Meldet euch jetzt direkt via DM bei uns oder bei der Halle 16 an (Anzahl Personen und dein Name).</p>'
+      + '<p>Programm:</p>'
+      + '<ul class="date-info-list">'
+      + '<li>18:00 - Eintrudeln</li>'
+      + '<li>18:30 - Beginn Quiz</li>'
+      + '<li>18:30 - 19:15 1., 2. Runde</li>'
+      + '<li>19:15 - 20:00 Pause</li>'
+      + '<li>20:00 - 21:00 3., 4., 5. Runde und Preisverleihung</li>'
+      + '<li>Kosten: 5 CHF pro Person fuers Quiz</li>'
+      + '</ul>',
+    detailsHtml_en: 'On Wednesday, September 16 at 18:00, the Pub Quiz at Halle 16 takes place.'
+      + '<p>Alongside the quiz, there are different food stands, from pizza and Indian food to burgers and Lebanese cuisine.</p>'
+      + '<p>Register now via DM with us or with Halle 16 (number of people and your name).</p>'
+      + '<p>Program:</p>'
+      + '<ul class="date-info-list">'
+      + '<li>18:00 - Arrival</li>'
+      + '<li>18:30 - Quiz starts</li>'
+      + '<li>18:30 - 19:15 Rounds 1 and 2</li>'
+      + '<li>19:15 - 20:00 Break</li>'
+      + '<li>20:00 - 21:00 Rounds 3, 4, 5 and prize ceremony</li>'
+      + '<li>Cost: CHF 5 per person for the quiz</li>'
+      + '</ul>',
+    link: "https://www.instagram.com/pubquizbern/",
+    linkText: "Via Instagram DM anmelden",
+    linkText_en: "Register via Instagram DM"
+  },
+  {
     date: "Mi, 20. Mai 2026",
     description: "Pub Quiz in der Halle 16",
     isPast: true,
