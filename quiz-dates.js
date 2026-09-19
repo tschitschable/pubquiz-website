@@ -156,7 +156,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 19. Aug 2026",
     description: "Pub Quiz im Löscher",
-    soldOut: true,
+    isPast: true,
     image: "assets/loescher-quiz-aug-2026.png",
     detailsHtml: 'Pub Quiz im Restaurant Bar Löscher, 18:30 – 21:00'
       + '<ul class="date-info-list">'
@@ -167,12 +167,15 @@ window.PUB_QUIZ_DATES = [
       + '<ul class="date-info-list">'
       + '<li>Group size 2–6 people per team</li>'
       + '<li>Cost: CHF 5.— per person for the quiz</li>'
-      + '</ul>'
+      + '</ul>',
+    impressionsLink: "https://www.instagram.com/p/DcQOUfeik0Q/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
+    impressionsText: "Impressionen",
+    impressionsText_en: "Impressions"
   },
   {
     date: "Mi, 16. Sept 2026",
     description: "Pub Quiz in der Halle 16",
-    soldOut: true,
+    isPast: true,
     image: "assets/halle16-quiz-sept-2026.png",
     detailsHtml: 'Am Mittwoch, 16.9. um 18:00 findet das Pub Quiz in der Halle 16 statt.'
       + '<p>Neben dem Quiz gibt es verschiedene Food-Staende, von Pizza zu Indisch, Burger oder Libanesisch.</p>'
@@ -198,9 +201,9 @@ window.PUB_QUIZ_DATES = [
       + '<li>20:00 - 21:00 Rounds 3, 4, 5 and prize ceremony</li>'
       + '<li>Cost: CHF 5 per person for the quiz</li>'
       + '</ul>',
-    link: "https://www.instagram.com/pubquizbern/",
-    linkText: "Via Instagram DM anmelden",
-    linkText_en: "Register via Instagram DM"
+    impressionsLink: "https://www.instagram.com/p/DdZFlGuijwK/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==",
+    impressionsText: "Impressionen",
+    impressionsText_en: "Impressions"
   },
   {
     date: "Mi, 20. Mai 2026",
@@ -234,5 +237,45 @@ window.PUB_QUIZ_DATES = [
     impressionsLink: "https://www.instagram.com/p/DYmVI0tilUF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     impressionsText: "Impressionen",
     impressionsText_en: "Impressions"
+  },
+  {
+    date: "Mi, 28. Okt 2026",
+    description: "Pub Quiz im Löscher",
+    image: "assets/loescher-quiz-okt-2026.jpg",
+    detailsHtml: 'Wann: Mi, 28.10. | Quiz-Start: 18:30 Uhr'
+      + '<ul class="date-info-list">'
+      + '<li>5 Runden mit Fragen</li>'
+      + '<li>Preise für das Gewinner:innen Team</li>'
+      + '<li>CHF 5.— pro Person</li>'
+      + '<li>Teams: 2 bis 6 Personen</li>'
+      + '</ul>',
+    detailsHtml_en: 'When: Wed, 28 Oct | Quiz start: 18:30'
+      + '<ul class="date-info-list">'
+      + '<li>5 rounds of questions</li>'
+      + '<li>Prizes for the winning team</li>'
+      + '<li>CHF 5.— per person</li>'
+      + '<li>Teams: 2 to 6 people</li>'
+      + '</ul>',
+    link: "https://kurzlink.ch/loescherquiz",
+    linkText: "Jetzt anmelden",
+    linkText_en: "Register now"
+  },
+  {
+    date: "Mi, 11. Nov 2026",
+    description: "Quiz im Eiger",
+    image: "assets/eiger-quiz-nov-2026.jpg",
+    detailsHtml: 'Pub Quiz im Restaurant Eiger, 18:00 – 21:30 (inkl. Essen)'
+      + '<ul class="date-info-list">'
+      + '<li>Gruppengrösse 2–6 Personen pro Team</li>'
+      + '<li>Kosten: CHF 5.— pro Person fürs Quiz</li>'
+      + '</ul>',
+    detailsHtml_en: 'Pub Quiz at Restaurant Eiger, 18:00 – 21:30 (including food)'
+      + '<ul class="date-info-list">'
+      + '<li>Group size 2–6 people per team</li>'
+      + '<li>Cost: CHF 5.— per person for the quiz</li>'
+      + '</ul>',
+    link: "https://kurzlink.ch/Eigerquiz",
+    linkText: "Jetzt anmelden",
+    linkText_en: "Register now"
   },
 ];
