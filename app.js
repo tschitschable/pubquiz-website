@@ -249,6 +249,19 @@
         else upcoming.push(d);
       });
 
+      function dateSortKey(d) {
+        var parsed = parseGermanDate(d.date);
+        return parsed ? parsed.getTime() : 0;
+      }
+
+      // Upcoming: soonest first; past archive: most recent first
+      upcoming.sort(function (a, b) {
+        return dateSortKey(a) - dateSortKey(b);
+      });
+      pastDates.sort(function (a, b) {
+        return dateSortKey(b) - dateSortKey(a);
+      });
+
       var html = '';
       if (upcoming.length) {
         html += '<ul class="quiz-dates quiz-dates--upcoming">' +
