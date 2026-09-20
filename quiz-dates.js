@@ -263,6 +263,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 11. Nov 2026",
     description: "Quiz im Eiger",
+    soldOut: true,
     image: "assets/eiger-quiz-nov-2026.jpg",
     detailsHtml: 'Pub Quiz im Restaurant Eiger, 18:00 – 21:30 (inkl. Essen)'
       + '<ul class="date-info-list">'
