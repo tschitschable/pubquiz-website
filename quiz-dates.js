@@ -241,6 +241,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 28. Okt 2026",
     description: "Pub Quiz im Löscher",
+    soldOut: true,
     image: "assets/loescher-quiz-okt-2026.jpg",
     detailsHtml: 'Wann: Mi, 28.10. | Quiz-Start: 18:30 Uhr'
       + '<ul class="date-info-list">'
