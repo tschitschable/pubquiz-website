@@ -241,7 +241,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 28. Okt 2026",
     description: "Pub Quiz im Löscher",
-    soldOut: true,
+    isPast: true,
     image: "assets/loescher-quiz-okt-2026.jpg",
     detailsHtml: 'Wann: Mi, 28.10. | Quiz-Start: 18:30 Uhr'
       + '<ul class="date-info-list">'
@@ -257,9 +257,9 @@ window.PUB_QUIZ_DATES = [
       + '<li>CHF 5.— per person</li>'
       + '<li>Teams: 2 to 6 people</li>'
       + '</ul>',
-    link: "https://kurzlink.ch/loescherquiz",
-    linkText: "Jetzt anmelden",
-    linkText_en: "Register now"
+    impressionsLink: "https://www.instagram.com/p/DfE0GEzCt76/?utm_source=ig_web_copy_link&dlrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==",
+    impressionsText: "Impressionen",
+    impressionsText_en: "Impressions"
   },
   {
     date: "Mi, 11. Nov 2026",
@@ -283,6 +283,7 @@ window.PUB_QUIZ_DATES = [
   {
     date: "Mi, 2. Dez 2026",
     description: "Pub Quiz im Löscher",
+    soldOut: true,
     image: "assets/loescher-quiz-dez-2026.jpg",
     detailsHtml: 'Pub Quiz im Restaurant Bar Löscher, 18:30 – 21:00'
       + '<ul class="date-info-list">'
