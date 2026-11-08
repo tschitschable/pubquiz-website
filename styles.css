@@ -831,6 +831,24 @@ footer p {
   color: var(--bg);
 }
 
+.booking-email {
+  margin: 0.85rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.booking-email a {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.booking-email a:hover {
+  color: var(--text-muted);
+}
+
 /* Team name generator */
 .teamname-section {
   margin-top: 2rem;
