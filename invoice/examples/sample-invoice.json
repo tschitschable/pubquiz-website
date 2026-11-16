@@ -1,0 +1,15 @@
+{
+  "invoiceNumber": "20261111",
+  "invoiceDate": "2026-11-14",
+  "amount": 100,
+  "currency": "CHF",
+  "description": "Durchführung des Pub Quizzes im Eiger vom 11.11.2026",
+  "debtor": {
+    "name": "KG Gastrokultur GmbH",
+    "address": "Könzistrasse",
+    "buildingNumber": "151",
+    "zip": "3097",
+    "city": "Liebefeld",
+    "country": "CH"
+  }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>QR-Rechnung – Pub Quiz Bern</title>
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="tool-header no-print">
+      <div>
+        <h1>Swiss QR-Rechnung</h1>
+        <p>
+          Erzeugt eine vollständige Geschäftsrechnung mit Empfangsschein und Zahlteil
+          nach Swiss QR-Bill Standard (SCOR/RF-Referenz auf der bestehenden PostFinance-IBAN).
+        </p>
+      </div>
+      <a class="back-link" href="../">Zur Website</a>
+    </header>
+
+    <section class="panel no-print">
+      <form id="invoice-form">
+        <div class="grid">
+          <label>
+            Rechnungsnummer
+            <input name="invoiceNumber" required autocomplete="off">
+          </label>
+          <label>
+            Rechnungsdatum
+            <input name="invoiceDate" type="date" required>
+          </label>
+          <label>
+            Zahlungsfrist (Tage)
+            <input name="paymentDays" type="number" min="1" max="120" required>
+          </label>
+          <label>
+            Betrag (CHF)
+            <input name="amount" type="number" min="0" step="0.01" required>
+          </label>
+          <label class="full">
+            Leistungsbeschreibung
+            <textarea name="description" required placeholder="z. B. Durchführung des Pub Quizzes im Eiger vom …"></textarea>
+          </label>
+          <label>
+            Debitor Name
+            <input name="debtorName" required>
+          </label>
+          <label>
+            Debitor Strasse
+            <input name="debtorAddress" required>
+          </label>
+          <label>
+            Hausnummer
+            <input name="debtorBuilding">
+          </label>
+          <label>
+            PLZ
+            <input name="debtorZip" required>
+          </label>
+          <label>
+            Ort
+            <input name="debtorCity" required>
+          </label>
+          <label>
+            Land
+            <input name="debtorCountry" value="CH" maxlength="2" required>
+          </label>
+        </div>
+        <div class="actions">
+          <button type="submit">Vorschau erzeugen</button>
+          <button type="button" class="secondary" id="btn-sample">Beispiel laden</button>
+          <button type="button" class="secondary" id="btn-print">Drucken / PDF</button>
+        </div>
+        <div id="status" role="status"></div>
+        <p class="note">
+          Für druckgenaue PDFs ohne Browser-Druckdialog:
+          <code>cd invoice && npm install && node generate.mjs --data examples/sample-invoice.json</code>
+        </p>
+      </form>
+    </section>
+
+    <section id="preview-wrap" hidden>
+      <h2 class="no-print">Vorschau</h2>
+      <div id="invoice-preview"></div>
+      <div id="qr-mount" aria-hidden="true"></div>
+    </section>
+  </div>
+  <script type="module" src="dist/browser.js"></script>
+</body>
+</html>

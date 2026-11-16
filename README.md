@@ -20,3 +20,7 @@ Dann `http://localhost:8000` aufrufen.
 - **Instagram:** In `index.html` beim Link `id="instagram-link"` das Attribut `href` auf eure Instagram-URL setzen (z. B. `https://instagram.com/eueraccount`).
 
 Kein Build nötig – nur HTML, CSS und JavaScript.
+
+## QR-Rechnungen
+
+Offizielle Swiss QR-Rechnungen (Rechnungstext + Empfangsschein/Zahlteil) liegen unter [`invoice/`](invoice/). Siehe dortige README für CLI und Browser-Vorschau.
