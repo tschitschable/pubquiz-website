@@ -299,4 +299,36 @@ window.PUB_QUIZ_DATES = [
     linkText: "Jetzt anmelden",
     linkText_en: "Register now"
   },
+  {
+    date: "Mi, 20. Jan 2027",
+    description: "Quiz im Eiger",
+    image: "assets/eiger-quiz-jan-2027.jpg",
+    detailsHtml: 'Pub Quiz im Restaurant Eiger, 18:00 – 21:00'
+      + '<p>Programm:</p>'
+      + '<ul class="date-info-list">'
+      + '<li>18:00 – Start Quiz</li>'
+      + '<li>18:00 – 19:00 Runde 1–3</li>'
+      + '<li>19:00 – 20:00 Delicious Food (Starter + Main)</li>'
+      + '<li>20:00 – 20:45 Runde 4–5</li>'
+      + '<li>20:45 – 21:00 Sieger:innen-Ehrung</li>'
+      + '<li>21:00 – Dessert</li>'
+      + '<li>Gruppengrösse 2–6 Personen pro Team</li>'
+      + '<li>Kosten: CHF 5.— pro Person fürs Quiz</li>'
+      + '</ul>',
+    detailsHtml_en: 'Pub Quiz at Restaurant Eiger, 18:00 – 21:00'
+      + '<p>Program:</p>'
+      + '<ul class="date-info-list">'
+      + '<li>18:00 – Quiz starts</li>'
+      + '<li>18:00 – 19:00 Rounds 1–3</li>'
+      + '<li>19:00 – 20:00 Delicious food (starter + main)</li>'
+      + '<li>20:00 – 20:45 Rounds 4–5</li>'
+      + '<li>20:45 – 21:00 Winner ceremony</li>'
+      + '<li>21:00 – Dessert</li>'
+      + '<li>Group size 2–6 people per team</li>'
+      + '<li>Cost: CHF 5.— per person for the quiz</li>'
+      + '</ul>',
+    link: "https://mytools.aleno.me/reservations/v2.0/reservations.html?k=eyJrIjoid2l2dTVrM2lsNm15cnBiOWlwdzZ4bmViajhycnVkaWRpZ280bGZwODBsbzlhNGlweTEiLCJyIjoiNGhiMmY3QVhQWXhjM2U0RWoiLCJzIjoiaHR0cHM6Ly9teXRvb2xzLmFsZW5vLm1lLyJ9&date=2027-01-20&paxDef=2&shifts=Pub+Quiz+im+J%C3%A4nner",
+    linkText: "Jetzt anmelden",
+    linkText_en: "Register now"
+  },
 ];
